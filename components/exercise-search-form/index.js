@@ -21,11 +21,12 @@ export default function ExerciseSearchForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="exercise-search">
+      <label htmlFor="exercise_search">
         Exercise:
         <input
           type="text"
           name="exercise_search"
+          id="exercise_search"
           pattern="[A-Za-z]{3,20}"
           required
         ></input>
