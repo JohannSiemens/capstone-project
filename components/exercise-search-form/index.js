@@ -13,13 +13,16 @@ export default function ExerciseSearchForm({
     const testResult = testExercises.filter((exercise) =>
       exercise.name.toLowerCase().includes(exerciseInput.toLowerCase())
     );
-    setExerciseResult(testResult);
+    console.log("Test Result:", testResult);
+    testResult.length === 0
+      ? alert("No exercises found")
+      : setExerciseResult(testResult);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="exercise-search">
-        Exercise:{" "}
+        Exercise:
         <input
           type="text"
           name="exercise_search"
