@@ -3,7 +3,6 @@ import ExerciseSearchForm from "@/components/exercise-search-form";
 import AddedExercises from "@/components/added-exercises";
 
 export default function HomePage({
-  exerciseInput,
   setExerciseInput,
   exerciseResult,
   setExerciseResult,
