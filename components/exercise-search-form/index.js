@@ -3,7 +3,6 @@ import { testExercises } from "@/test_data";
 export default function ExerciseSearchForm({
   setExerciseInput,
   setExerciseResult,
-  exerciseResult,
 }) {
   async function handleSubmit(event) {
     event.preventDefault();
@@ -20,7 +19,13 @@ export default function ExerciseSearchForm({
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="exercise-search">
-        Exercise: <input type="text" name="exercise_search" required></input>
+        Exercise:{" "}
+        <input
+          type="text"
+          name="exercise_search"
+          pattern="[A-Za-z]{3,20}"
+          required
+        ></input>
       </label>
       <button type="submit">Search</button>
     </form>

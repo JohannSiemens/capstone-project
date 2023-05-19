@@ -13,7 +13,6 @@ export default function HomePage({
     <div>
       <h1>My Workout</h1>
       <ExerciseSearchForm
-        exerciseResult={exerciseResult}
         setExerciseInput={setExerciseInput}
         setExerciseResult={setExerciseResult}
       />
