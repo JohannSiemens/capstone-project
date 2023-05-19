@@ -31,7 +31,7 @@ function ExerciseSearchForm({
     const exerciseInput = event.target.elements.exercise_search.value;
     setExerciseInput(exerciseInput);
     const testResult = testExercises.filter((exercise) =>
-      exercise.name.includes(exerciseInput)
+      exercise.name.toLowerCase().includes(exerciseInput.toLowerCase())
     );
     setExerciseResult(testResult);
     console.log(exerciseResult);
