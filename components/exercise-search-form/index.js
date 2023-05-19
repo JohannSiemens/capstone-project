@@ -13,7 +13,6 @@ export default function ExerciseSearchForm({
     const testResult = testExercises.filter((exercise) =>
       exercise.name.toLowerCase().includes(exerciseInput.toLowerCase())
     );
-    console.log("Test Result:", testResult);
     testResult.length === 0
       ? alert("No exercises found")
       : setExerciseResult(testResult);
