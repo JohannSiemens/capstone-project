@@ -5,6 +5,8 @@ export default function HomePage({
   setExerciseInput,
   exerciseResult,
   setExerciseResult,
+  setAddedExercise,
+  addedExercise,
 }) {
   return (
     <div>
@@ -14,7 +16,12 @@ export default function HomePage({
         setExerciseInput={setExerciseInput}
         setExerciseResult={setExerciseResult}
       />
-      <ExerciseResults exerciseResult={exerciseResult} />
+      <ExerciseResults
+        exerciseResult={exerciseResult}
+        setAddedExercise={setAddedExercise}
+        addedExercise={addedExercise}
+      />
+      <AddedExercises addedExercise={addedExercise} />
     </div>
   );
 }
@@ -34,7 +41,6 @@ function ExerciseSearchForm({
       exercise.name.toLowerCase().includes(exerciseInput.toLowerCase())
     );
     setExerciseResult(testResult);
-    console.log(exerciseResult);
   }
 
   return (
@@ -47,11 +53,30 @@ function ExerciseSearchForm({
   );
 }
 
-function ExerciseResults({ exerciseResult }) {
+function ExerciseResults({ exerciseResult, setAddedExercise, addedExercise }) {
+  function addExercise(exercise) {
+    setAddedExercise([...addedExercise, exercise]);
+  }
+
   return (
     <ul>
       {exerciseResult.map((exercise) => (
-        <li key={exercise.name + exercise.type}>{exercise.name}</li>
+        <li key={exercise.name}>
+          {exercise.name}
+          <button onClick={() => addExercise(exercise.name)}>Add</button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function AddedExercises({ addedExercise }) {
+  console.log("Added Exercise: ", addedExercise);
+  return (
+    <ul>
+      Test
+      {addedExercise.map((exercise) => (
+        <li key={exercise}>{exercise}</li>
       ))}
     </ul>
   );

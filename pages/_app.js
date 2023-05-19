@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function App({ Component, pageProps }) {
   const [exerciseInput, setExerciseInput] = useState();
   const [exerciseResult, setExerciseResult] = useState([]);
+  const [addedExercise, setAddedExercise] = useState([]);
 
   return (
     <>
@@ -14,6 +15,8 @@ export default function App({ Component, pageProps }) {
         setExerciseInput={setExerciseInput}
         exerciseResult={exerciseResult}
         setExerciseResult={setExerciseResult}
+        addedExercise={addedExercise}
+        setAddedExercise={setAddedExercise}
       />
     </>
   );
