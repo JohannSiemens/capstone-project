@@ -1,14 +1,24 @@
-# Capstone Project Template
+# Fitness App - neuefische Capstone Project
 
-This project was created from the neuefische Next.js template.
+A fitness app as the final (capstone) project for my neuefische web development bootcamp. The users can create templates for their workout plans and then use those to track their workouts to see how much progress they made for each template during several workout plan cycles.
 
-## Local development
+## Detailed description
 
-To run project commands locally, you need to install the dependencies using `npm i` first.
+### Current State/Version
 
-You can then use the following commands:
+The project is currently in Alpha 1.0.
 
-- `npm run dev` to start the development server
-- `npm run build` to create a production build
-- `npm run start` to start the production build
-- `npm run test` to run the tests in watch mode (if available)
+### Features
+
+The User can search for different exercises, gets an overview of his search results and then can add those to his workout.
+
+### Technologies
+
+This project is created with:
+
+- React 18.2.0
+- Next.js 13.3.1
+
+### Setup
+
+To run this project locally you need ...
