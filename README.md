@@ -4,7 +4,7 @@ A fitness app as the final (capstone) project for my neuefische web development 
 
 ## Detailed description
 
-You can create a workout, search for exercises and add the search results to your current workout.
+You can create a workout session, search for exercises and add the search results to your current workout.
 
 ### Current State/Version
 
