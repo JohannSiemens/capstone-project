@@ -8,7 +8,7 @@ You can create a workout, search for exercises and add the search results to you
 
 ### Current State/Version
 
-The project is currently in Alpha 1.0.
+The project is currently in Alpha 1.0 (work in progress).
 
 ### Features
 
