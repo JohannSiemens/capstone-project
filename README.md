@@ -4,6 +4,8 @@ A fitness app as the final (capstone) project for my neuefische web development 
 
 ## Detailed description
 
+You can create a workout and add different exercises to this workout.
+
 ### Current State/Version
 
 The project is currently in Alpha 1.0.
