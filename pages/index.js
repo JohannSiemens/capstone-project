@@ -8,6 +8,8 @@ export default function HomePage({
   setExerciseResult,
   setAddedExercise,
   addedExercise,
+  openCard,
+  setOpenCard,
 }) {
   return (
     <div>
@@ -20,8 +22,14 @@ export default function HomePage({
         exerciseResult={exerciseResult}
         setAddedExercise={setAddedExercise}
         addedExercise={addedExercise}
+        openCard={openCard}
+        setOpenCard={setOpenCard}
       />
-      <AddedExercises addedExercise={addedExercise} />
+      <AddedExercises
+        addedExercise={addedExercise}
+        openCard={openCard}
+        setOpenCard={setOpenCard}
+      />
     </div>
   );
 }

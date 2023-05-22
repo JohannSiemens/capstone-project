@@ -5,6 +5,7 @@ export default function App({ Component, pageProps }) {
   const [exerciseInput, setExerciseInput] = useState();
   const [exerciseResult, setExerciseResult] = useState([]);
   const [addedExercise, setAddedExercise] = useState([]);
+  const [openCard, setOpenCard] = useState([]);
 
   return (
     <>
@@ -17,6 +18,8 @@ export default function App({ Component, pageProps }) {
         setExerciseResult={setExerciseResult}
         addedExercise={addedExercise}
         setAddedExercise={setAddedExercise}
+        openCard={openCard}
+        setOpenCard={setOpenCard}
       />
     </>
   );
