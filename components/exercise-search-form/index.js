@@ -20,7 +20,7 @@ export default function ExerciseSearchForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="exercise_search">
+      <label>
         Exercise:
         <input
           type="text"
@@ -28,7 +28,7 @@ export default function ExerciseSearchForm({
           id="exercise_search"
           pattern="[A-Za-z]{3,20}"
           required
-        ></input>
+        />
       </label>
       <button type="submit">Search</button>
     </form>

@@ -7,7 +7,7 @@ test("renders a label", () => {
   expect(label).toBeInTheDocument();
 });
 
-test("renders the search input field and the search button", async () => {
+test("renders the search input field and the search button", () => {
   render(<ExerciseSearchForm />);
 
   const input = screen.getByLabelText(/exercise:/i);

@@ -1,18 +1,21 @@
+import { v4 as uuidv4 } from "uuid";
+
 export default function ExerciseResults({
   exerciseResult,
   setAddedExercise,
   addedExercise,
 }) {
   function addExercise(exercise) {
-    setAddedExercise([...addedExercise, exercise]);
+    const key = uuidv4();
+    setAddedExercise([...addedExercise, { ...exercise, key: key }]);
   }
 
   return (
     <ul>
       {exerciseResult.map((exercise) => (
-        <li key={exercise.name + exercise.type}>
+        <li key={exercise.id}>
           {exercise.name}
-          <button onClick={() => addExercise(exercise.name)}>Add</button>
+          <button onClick={() => addExercise(exercise)}>Add</button>
         </li>
       ))}
     </ul>
