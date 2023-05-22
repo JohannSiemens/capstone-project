@@ -6,26 +6,25 @@ export default function AddedExercises({
   setOpenCard,
 }) {
   function openCardSetter(id) {
-    setOpenCard(
-      openCard.map((card) => {
-        if (card !== id) {
-          return id;
-        } else {
-          return;
-        }
-      })
-    );
+    console.log(openCard);
+    openCard.find((card) => {
+      if (card !== id) {
+        setOpenCard([...openCard, id]);
+      } else {
+        setOpenCard([...openCard]);
+      }
+    });
   }
 
   return (
     <ul>
       {addedExercise.map((exercise) => (
-        <li key={exercise.key}>
-          <button onClick={() => openCardSetter(exercise.key)}>
+        <li key={exercise.id}>
+          <button onClick={() => openCardSetter(exercise.id)}>
             {exercise.name}
           </button>
           {openCard.find((card) =>
-            card === exercise.key ? <OpenCard /> : card
+            card === exercise.id ? <OpenCard /> : card
           )}
         </li>
       ))}
