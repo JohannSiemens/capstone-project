@@ -7,7 +7,7 @@ export default function ExerciseResults({
 }) {
   function addExercise(exercise) {
     const key = uuidv4();
-    setAddedExercise([...addedExercise, { ...exercise, key: key }]);
+    setAddedExercise([...addedExercise, { ...exercise, id: key }]);
   }
 
   return (
