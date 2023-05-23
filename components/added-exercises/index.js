@@ -18,9 +18,9 @@ function AddedExercise({ exercise }) {
     setOpenCard(!openCard);
   }
   return (
-    <li key={exercise.id}>
+    <li key={exercise.id} style={{ listStyleType: "none" }}>
       <button onClick={openCardSetter}>{exercise.name}</button>
-      {openCard === true ? <OpenCard exercise={exercise.id} /> : null}
+      {openCard === true ? <OpenCard /> : null}
     </li>
   );
 }
