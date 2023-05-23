@@ -1,8 +1,12 @@
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
-export default function OpenCard() {
-  const [addedSet, setAddedSet] = useState([]);
-  const [currentSet, setCurrentSet] = useState(1);
+export default function OpenCard({ id }) {
+  const [addedSet, setAddedSet] = useLocalStorageState(id, {
+    defaultValue: [],
+  });
+  const [currentSet, setCurrentSet] = useLocalStorageState(id + id, {
+    defaultValue: 1,
+  });
 
   return (
     <>
@@ -20,8 +24,6 @@ export default function OpenCard() {
 function OpenCardForm({ addedSet, setAddedSet, currentSet, setCurrentSet }) {
   async function handleSubmit(event) {
     event.preventDefault();
-    // const formData = new FormData(event.target);
-    // const data = Object.fromEntries(formData);
     const exerciseInput = event.target.elements.rep_input.value;
     setAddedSet([...addedSet, { set: currentSet, repetitions: exerciseInput }]);
     setCurrentSet(currentSet + 1);
@@ -50,11 +52,11 @@ function OpenCardForm({ addedSet, setAddedSet, currentSet, setCurrentSet }) {
 function AddedSets({ addedSet }) {
   return (
     <ul>
-      {addedSet.map((set) => {
-        <li>
+      {addedSet.map((set) => (
+        <li key={set.set + set.repetitions}>
           Set {set.set} - Repetitions: {set.repetitions}
-        </li>;
-      })}
+        </li>
+      ))}
     </ul>
   );
 }

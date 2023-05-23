@@ -19,8 +19,10 @@ function AddedExercise({ exercise }) {
   }
   return (
     <li key={exercise.id} style={{ listStyleType: "none" }}>
-      <button onClick={openCardSetter}>{exercise.name}</button>
-      {openCard === true ? <OpenCard /> : null}
+      <button onClick={openCardSetter}>
+        {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
+      </button>
+      {openCard === true ? <OpenCard id={exercise.id} /> : <></>}
     </li>
   );
 }
