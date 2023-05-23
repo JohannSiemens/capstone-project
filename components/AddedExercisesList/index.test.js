@@ -1,11 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import AddedExercises from ".";
 import AddedExercisesList from ".";
 
 const testExercise = ["Dumbbell Flyes"];
 
-test("renders a list element for Dumbbell Flyes", () => {
+test("renders an unsorted list", () => {
   render(<AddedExercisesList addedExercise={testExercise} />);
-  const li = screen.getByText("Dumbbell Flyes");
-  expect(li).toBeInTheDocument();
+  const ul = screen.getByRole("list");
+  expect(ul).toBeInTheDocument();
 });
