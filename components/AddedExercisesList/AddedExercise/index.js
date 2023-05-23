@@ -12,7 +12,7 @@ export default function AddedExercise({ exercise }) {
       <button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
       </button>
-      {openCard === true ? <OpenCard id={exercise.id} /> : <></>}
+      {openCard && <OpenCard id={exercise.id} />}
     </li>
   );
 }
