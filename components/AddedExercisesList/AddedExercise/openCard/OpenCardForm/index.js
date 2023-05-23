@@ -20,7 +20,6 @@ export default function OpenCardForm({
           name="rep_input"
           id="rep_input"
           pattern="[0-9]{1,3}"
-          placeholder="1"
           required
         />
       </label>
