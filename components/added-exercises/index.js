@@ -1,30 +1,26 @@
 import OpenCard from "./openCard";
+import { useState } from "react";
 
-export default function AddedExercises({
-  addedExercise,
-  openCard,
-  setOpenCard,
-}) {
-  //State Handling mit Zustand checken und bool in addedExercise für open schaffen
-  function openCardSetter(id) {
-    console.log(openCard);
-    setOpenCard((prevOpenCard) => (prevOpenCard === id ? null : [id]));
-  }
-
+export default function AddedExercisesList({ addedExercise }) {
   return (
     <ul>
       {addedExercise.map((exercise) => (
-        <li key={exercise.id}>
-          <button onClick={() => openCardSetter(exercise.id)}>
-            {exercise.name}
-          </button>
-          {openCard.find((card) => {
-            if (card === exercise.id) {
-              return <OpenCard />;
-            }
-          })}
-        </li>
+        <AddedExercise exercise={exercise} key={exercise.id} />
       ))}
     </ul>
+  );
+}
+
+function AddedExercise({ exercise }) {
+  const [openCard, setOpenCard] = useState(false);
+
+  function openCardSetter() {
+    setOpenCard(!openCard);
+  }
+  return (
+    <li key={exercise.id}>
+      <button onClick={openCardSetter}>{exercise.name}</button>
+      {openCard === true ? <OpenCard exercise={exercise.id} /> : null}
+    </li>
   );
 }

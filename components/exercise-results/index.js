@@ -4,8 +4,6 @@ export default function ExerciseResults({
   exerciseResult,
   setAddedExercise,
   addedExercise,
-  openCard,
-  setOpenCard,
 }) {
   function addExercise(exercise) {
     const key = uuidv4();
