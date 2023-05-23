@@ -1,6 +1,6 @@
 import ExerciseResults from "@/components/exercise-results";
 import ExerciseSearchForm from "@/components/exercise-search-form";
-import AddedExercises from "@/components/added-exercises";
+import AddedExercisesList from "@/components/AddedExercisesList";
 
 export default function HomePage({
   setExerciseInput,
@@ -21,7 +21,7 @@ export default function HomePage({
         setAddedExercise={setAddedExercise}
         addedExercise={addedExercise}
       />
-      <AddedExercises addedExercise={addedExercise} />
+      <AddedExercisesList addedExercise={addedExercise} />
     </div>
   );
 }
