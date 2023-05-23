@@ -3,6 +3,7 @@ import ExerciseResults from ".";
 
 const testExercise = [
   {
+    id: 1,
     name: "Dumbbell Flyes",
     type: "strength",
     muscle: "chest",
@@ -16,7 +17,7 @@ const testExercise = [
 test("renders a list element for Dumbbell Flyes with a Button", () => {
   const exerciseResult = testExercise;
   render(<ExerciseResults exerciseResult={exerciseResult} />);
-  const li = screen.getByText("Dumbbell Flyes");
+  const li = screen.getByText(/Dumbbell Flyes/i);
   expect(li).toBeInTheDocument();
 
   const button = screen.getByRole("button", { name: /add/i });
