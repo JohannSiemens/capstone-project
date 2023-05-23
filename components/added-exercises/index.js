@@ -5,15 +5,10 @@ export default function AddedExercises({
   openCard,
   setOpenCard,
 }) {
+  //State Handling mit Zustand checken und bool in addedExercise für open schaffen
   function openCardSetter(id) {
     console.log(openCard);
-    openCard.find((card) => {
-      if (card !== id) {
-        setOpenCard([...openCard, id]);
-      } else {
-        setOpenCard([...openCard]);
-      }
-    });
+    setOpenCard((prevOpenCard) => (prevOpenCard === id ? null : [id]));
   }
 
   return (
@@ -23,9 +18,11 @@ export default function AddedExercises({
           <button onClick={() => openCardSetter(exercise.id)}>
             {exercise.name}
           </button>
-          {openCard.find((card) =>
-            card === exercise.id ? <OpenCard /> : card
-          )}
+          {openCard.find((card) => {
+            if (card === exercise.id) {
+              return <OpenCard />;
+            }
+          })}
         </li>
       ))}
     </ul>
