@@ -13,7 +13,9 @@ export default function ExerciseSearchForm({
     setExerciseInput(exerciseInput);
     const response = await fetch(`/api/exercise/${exerciseInput}`);
     const responseData = await response.json();
-    setExerciseResult(responseData);
+    responseData.length === 0
+      ? alert("No exercises found")
+      : setExerciseResult(responseData);
   }
 
   return (

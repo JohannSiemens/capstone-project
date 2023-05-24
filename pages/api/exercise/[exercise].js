@@ -4,7 +4,7 @@ export default async function fetcher(request, response) {
   const { exercise } = request.query;
   if (request.method === "GET") {
     console.log("Exercise: ", exercise);
-    const data = await fetch(
+    const responseData = await fetch(
       `https://api.api-ninjas.com/v1/exercises?name=${exercise}`,
       {
         method: "GET",
@@ -13,11 +13,14 @@ export default async function fetcher(request, response) {
         },
       }
     );
-    if (!data) {
+    if (responseData.ok) {
+      const data = await responseData.json();
+      return response.status(200).json(data);
+    } else if (!responseData) {
       return response.status(404).json({ status: "Not Found" });
+    } else {
+      return response.status(500).json(responseData);
     }
-    const dataJSON = await data.json();
-    return response.status(200).json(dataJSON);
   }
   return response.status(501).json({ status: "Method not implemented." });
 }
