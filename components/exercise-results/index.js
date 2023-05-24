@@ -13,7 +13,7 @@ export default function ExerciseResults({
   return (
     <ul>
       {exerciseResult.map((exercise) => (
-        <li key={exercise.id} style={{ listStyleType: "none" }}>
+        <li key={uuidv4()} style={{ listStyleType: "none" }}>
           {exercise.name}
           <button onClick={() => addExercise(exercise)}>Add</button>
         </li>
