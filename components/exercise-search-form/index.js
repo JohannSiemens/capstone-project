@@ -4,7 +4,7 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const exercise = event.target.elements.exercise_search.value;
-    const response = await fetch("/api/" + exercise);
+    const response = await fetch(`/api/exercise/${exercise}`);
     const responseData = await response.json();
     responseData.length === 0
       ? alert("No exercises found")
