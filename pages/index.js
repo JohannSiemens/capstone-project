@@ -7,17 +7,11 @@ export default function HomePage({
   setExerciseResult,
   setAddedExercise,
   addedExercise,
-  exerciseInput,
-  setExerciseInput,
 }) {
   return (
     <div>
       <h1>My Workout</h1>
-      <ExerciseSearchForm
-        setExerciseResult={setExerciseResult}
-        exerciseInput={exerciseInput}
-        setExerciseInput={setExerciseInput}
-      />
+      <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults
         exerciseResult={exerciseResult}
         setAddedExercise={setAddedExercise}

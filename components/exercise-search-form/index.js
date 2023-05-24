@@ -1,16 +1,9 @@
-import useSWR from "swr";
-
-export default function ExerciseSearchForm({
-  setExerciseInput,
-  exerciseInput,
-  setExerciseResult,
-}) {
+export default function ExerciseSearchForm({ setExerciseResult }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const exerciseInput = event.target.elements.exercise_search.value;
-    setExerciseInput(exerciseInput);
     const response = await fetch(`/api/exercise/${exerciseInput}`);
     const responseData = await response.json();
     responseData.length === 0
