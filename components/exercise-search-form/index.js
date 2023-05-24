@@ -1,7 +1,8 @@
-import { testExercises } from "@/test_data";
+import useSWR from "swr";
 
 export default function ExerciseSearchForm({
   setExerciseInput,
+  exerciseInput,
   setExerciseResult,
 }) {
   async function handleSubmit(event) {
@@ -9,18 +10,10 @@ export default function ExerciseSearchForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const exerciseInput = event.target.elements.exercise_search.value;
-
-    const response = await fetch("/api/exercise/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(exerciseInput),
-    });
-
-    response.length === 0
-      ? alert("No exercise found")
-      : setExerciseResult(response);
+    setExerciseInput(exerciseInput);
+    const response = await fetch(`/api/exercise/${exerciseInput}`);
+    const responseData = await response.json();
+    setExerciseResult(responseData);
   }
 
   return (
