@@ -3,7 +3,6 @@ const key = process.env.API_Key;
 export default async function fetcher(request, response) {
   const { exercise } = request.query;
   if (request.method === "GET") {
-    console.log("Exercise: ", exercise);
     const responseData = await fetch(
       `https://api.api-ninjas.com/v1/exercises?name=${exercise}`,
       {
