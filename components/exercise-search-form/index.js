@@ -3,8 +3,8 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    const exerciseInput = event.target.elements.exercise_search.value;
-    const response = await fetch(`/api/exercise/${exerciseInput}`);
+    const exercise = event.target.elements.exercise_search.value;
+    const response = await fetch(`/api/exercise/${exercise}`);
     const responseData = await response.json();
     responseData.length === 0
       ? alert("No exercises found")
