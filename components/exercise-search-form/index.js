@@ -9,13 +9,18 @@ export default function ExerciseSearchForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const exerciseInput = event.target.elements.exercise_search.value;
-    setExerciseInput(exerciseInput);
-    const testResult = testExercises.filter((exercise) =>
-      exercise.name.toLowerCase().includes(exerciseInput.toLowerCase())
-    );
-    testResult.length === 0
-      ? alert("No exercises found")
-      : setExerciseResult(testResult);
+
+    const response = await fetch("/api/exercise/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(exerciseInput),
+    });
+
+    response.length === 0
+      ? alert("No exercise found")
+      : setExerciseResult(response);
   }
 
   return (
