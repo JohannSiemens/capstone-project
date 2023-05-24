@@ -3,7 +3,6 @@ import ExerciseSearchForm from "@/components/exercise-search-form";
 import AddedExercisesList from "@/components/AddedExercisesList";
 
 export default function HomePage({
-  setExerciseInput,
   exerciseResult,
   setExerciseResult,
   setAddedExercise,
@@ -12,10 +11,7 @@ export default function HomePage({
   return (
     <div>
       <h1>My Workout</h1>
-      <ExerciseSearchForm
-        setExerciseInput={setExerciseInput}
-        setExerciseResult={setExerciseResult}
-      />
+      <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults
         exerciseResult={exerciseResult}
         setAddedExercise={setAddedExercise}
