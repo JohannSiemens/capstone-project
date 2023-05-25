@@ -9,6 +9,7 @@ const exerciseSchema = new Schema({
   equipment: { type: String, required: true },
   difficulty: { type: String, required: true },
   instructions: { type: String, required: true },
+  sets: { type: Array },
 });
 
 const Exercise =
