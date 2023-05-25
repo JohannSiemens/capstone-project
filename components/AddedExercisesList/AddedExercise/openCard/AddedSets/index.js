@@ -1,4 +1,4 @@
-export default function AddedSets({ addedSet }) {
+export default function AddedSets({ addedSet, exerciseID }) {
   return (
     addedSet.length > 0 && (
       <ul>

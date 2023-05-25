@@ -1,15 +1,32 @@
 export default function OpenCardForm({
-  addedSet,
-  setAddedSet,
   currentSet,
   setCurrentSet,
+  exerciseID,
 }) {
+  const { mutate } = useSWR();
   async function handleSubmit(event) {
     event.preventDefault();
     const exerciseInput = event.target.elements.rep_input.value;
-    setAddedSet([...addedSet, { set: currentSet, repetitions: exerciseInput }]);
+    const set = { set: currentSet, repetitions: exerciseInput };
+
+    const response = await fetch(`/api/${exerciseID}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(set),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (response.ok) {
+      mutate();
+    }
+
     setCurrentSet(currentSet + 1);
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <p>Set {currentSet}</p>
