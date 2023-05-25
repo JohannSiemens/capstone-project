@@ -1,30 +1,31 @@
-export default function OpenCardForm({
-  currentSet,
-  setCurrentSet,
-  exerciseID,
-}) {
-  const { mutate } = useSWR(`/api/db/${exerciseID}`);
+import useSWR from "swr";
+import { v4 as uuidv4 } from "uuid";
+
+export default function OpenCardForm({ currentSet, id }) {
+  const { mutate } = useSWR(`/api/db/${id}`);
   async function handleSubmit(event) {
     event.preventDefault();
     const exerciseInput = event.target.elements.rep_input.value;
-    const set = { set: currentSet, repetitions: exerciseInput };
+    const addedSet = {
+      set: currentSet,
+      repetitions: exerciseInput,
+      id: uuidv4(),
+    };
 
-    const response = await fetch(`/api/db/${exerciseID}`, {
+    const response = await fetch(`/api/db/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(set),
+      body: JSON.stringify(addedSet),
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log("Put response:", data);
 
     if (response.ok) {
       mutate();
     }
-
-    setCurrentSet(currentSet + 1);
   }
 
   return (
