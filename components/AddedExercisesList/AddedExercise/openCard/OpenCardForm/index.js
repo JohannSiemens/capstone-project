@@ -3,14 +3,14 @@ export default function OpenCardForm({
   setCurrentSet,
   exerciseID,
 }) {
-  const { mutate } = useSWR();
+  const { mutate } = useSWR(`/api/db/${exerciseID}`);
   async function handleSubmit(event) {
     event.preventDefault();
     const exerciseInput = event.target.elements.rep_input.value;
     const set = { set: currentSet, repetitions: exerciseInput };
 
-    const response = await fetch(`/api/${exerciseID}`, {
-      method: "POST",
+    const response = await fetch(`/api/db/${exerciseID}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

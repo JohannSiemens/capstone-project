@@ -15,5 +15,18 @@ export default async function handler(request, response) {
     response.status(200).json(exercise);
   }
 
+  if (request.method === "PUT") {
+    const setsData = request.body;
+
+    await Exercise.findByIdAndUpdate(id, {
+      sets: setsData,
+    });
+
+    response
+      .status(200)
+      .json({ status: "Sets for exercise with id " + id + " changed" });
+    return;
+  }
+
   response.status(501).json({ status: "Method not implemented." });
 }

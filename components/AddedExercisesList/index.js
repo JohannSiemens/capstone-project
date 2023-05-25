@@ -3,7 +3,6 @@ import useSWR from "swr";
 
 export default function AddedExercisesList() {
   const { data, isLoading } = useSWR("/api/db");
-  console.log(data);
 
   if (isLoading) {
     return <h1>Loading...</h1>;

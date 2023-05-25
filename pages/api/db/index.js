@@ -20,6 +20,7 @@ export default async function fetcher(request, response) {
       equipment: exercisesData.equipment,
       difficulty: exercisesData.difficulty,
       instructions: exercisesData.instructions,
+      sets: [],
     };
 
     await Exercise.create(newExercise);

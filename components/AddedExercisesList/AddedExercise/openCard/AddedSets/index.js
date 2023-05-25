@@ -1,9 +1,18 @@
+import useSWR from "swr";
+
 export default function AddedSets({ addedSet, exerciseID }) {
+  const { data, isLoading } = useSWR(`/api/db/${exerciseID}`);
+  console.log(data);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    addedSet.length > 0 && (
+    data.length > 0 && (
       <ul>
-        {addedSet.map((set) => (
-          <li key={set.set + set.repetitions}>
+        {data.map((set) => (
+          <li key={set._id}>
             Set {set.set} - Repetitions: {set.repetitions}
           </li>
         ))}
