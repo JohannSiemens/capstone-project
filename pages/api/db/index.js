@@ -1,4 +1,4 @@
-import dbConnect from "../../../db/connect";
+import dbConnect from "@/db/connect";
 import Exercise from "@/db/models/exercise";
 
 export default async function fetcher(request, response) {
@@ -11,16 +11,15 @@ export default async function fetcher(request, response) {
   }
 
   if (request.method === "POST") {
-    const exerciseData = request.body;
-    console.log(exerciseData);
+    const exercisesData = request.body;
 
     const newExercise = {
-      name: exerciseData.name,
-      type: exerciseData.type,
-      muscle: exerciseData.muslce,
-      equipment: exerciseData.equipment,
-      difficulty: exerciseData.difficulty,
-      instructions: exerciseData.instructions,
+      name: exercisesData.name,
+      type: exercisesData.type,
+      muscle: exercisesData.muscle,
+      equipment: exercisesData.equipment,
+      difficulty: exercisesData.difficulty,
+      instructions: exercisesData.instructions,
     };
 
     await Exercise.create(newExercise);

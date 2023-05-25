@@ -3,11 +3,16 @@ import useSWR from "swr";
 
 export default function AddedExercisesList() {
   const { data, isLoading } = useSWR("/api/db");
+  console.log(data);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <ul>
       {data.map((exercise) => (
-        <AddedExercise exercise={exercise} key={exercise.id} />
+        <AddedExercise exercise={exercise} key={exercise._id} />
       ))}
     </ul>
   );

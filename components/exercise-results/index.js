@@ -5,9 +5,6 @@ export default function ExerciseResults({ exerciseResult }) {
   const { mutate } = useSWR("/api/db");
 
   async function addExercise(exercise) {
-    // const key = uuidv4();
-    // setAddedExercise([...addedExercise, { ...exercise, id: key }]);
-
     const response = await fetch("/api/db", {
       method: "POST",
       headers: {
@@ -15,9 +12,6 @@ export default function ExerciseResults({ exerciseResult }) {
       },
       body: JSON.stringify(exercise),
     });
-
-    const data = await response.json();
-    console.log(data);
 
     if (response.ok) {
       mutate();
