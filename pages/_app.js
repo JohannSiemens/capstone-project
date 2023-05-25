@@ -1,20 +1,22 @@
 import GlobalStyle from "../styles";
 import { useState } from "react";
+import { SWRConfig } from "swr";
 
 export default function App({ Component, pageProps }) {
   const [exerciseResult, setExerciseResult] = useState([]);
-  const [addedExercise, setAddedExercise] = useState([]);
+
+  const fetcher = (url) => fetch(url).then((response) => response.json());
 
   return (
     <>
       <GlobalStyle />
-      <Component
-        {...pageProps}
-        exerciseResult={exerciseResult}
-        setExerciseResult={setExerciseResult}
-        addedExercise={addedExercise}
-        setAddedExercise={setAddedExercise}
-      />
+      <SWRConfig value={{ fetcher }}>
+        <Component
+          {...pageProps}
+          exerciseResult={exerciseResult}
+          setExerciseResult={setExerciseResult}
+        />
+      </SWRConfig>
     </>
   );
 }

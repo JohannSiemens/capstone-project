@@ -1,13 +1,27 @@
 import { v4 as uuidv4 } from "uuid";
+import useSWR from "swr";
 
-export default function ExerciseResults({
-  exerciseResult,
-  setAddedExercise,
-  addedExercise,
-}) {
-  function addExercise(exercise) {
-    const key = uuidv4();
-    setAddedExercise([...addedExercise, { ...exercise, id: key }]);
+export default function ExerciseResults({ exerciseResult }) {
+  const { mutate } = useSWR("/api/db");
+
+  async function addExercise(exercise) {
+    // const key = uuidv4();
+    // setAddedExercise([...addedExercise, { ...exercise, id: key }]);
+
+    const response = await fetch("/api/db", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(exercise),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (response.ok) {
+      mutate();
+    }
   }
 
   return (
