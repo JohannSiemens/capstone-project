@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function OpenCardForm({ id }) {
   const [currentSet, setCurrentSet] = useState(1);
-  const { data, isLoading, mutate } = useSWR(`/api/db/${id}`);
+  const { data, isLoading, mutate, error } = useSWR(`/api/db/${id}`);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -27,6 +27,7 @@ export default function OpenCardForm({ id }) {
       mutate();
     } else {
       console.error(`Error: ${response.status}`);
+      console.error(`Error : ${error}`);
     }
   }
 
