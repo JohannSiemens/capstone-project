@@ -1,8 +1,11 @@
 import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect, useState } from "react";
 
-export default function OpenCardForm({ currentSet, id }) {
-  const { mutate } = useSWR(`/api/db/${id}`);
+export default function OpenCardForm({ id }) {
+  const [currentSet, setCurrentSet] = useState(1);
+  const { data, isLoading, mutate } = useSWR(`/api/db/${id}`);
+
   async function handleSubmit(event) {
     event.preventDefault();
     const exerciseInput = event.target.elements.rep_input.value;
@@ -20,13 +23,17 @@ export default function OpenCardForm({ currentSet, id }) {
       body: JSON.stringify(addedSet),
     });
 
-    const data = await response.json();
-    console.log("Put response:", data);
-
     if (response.ok) {
       mutate();
     }
   }
+
+  useEffect(
+    (isLoading) => {
+      isLoading ? <p>...loading</p> : setCurrentSet(data.sets.length);
+    },
+    [data]
+  );
 
   return (
     <form onSubmit={handleSubmit}>
