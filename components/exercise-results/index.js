@@ -15,6 +15,8 @@ export default function ExerciseResults({ exerciseResult }) {
 
     if (response.ok) {
       mutate();
+    } else {
+      console.error(`Error: ${response.status}`);
     }
   }
 
