@@ -1,14 +1,10 @@
 import useSWR from "swr";
 
 export default function AddedSets({ id }) {
-  const { data, isLoading } = useSWR(`/api/db/${id}`);
+  const { data, isLoading, error } = useSWR(`/api/db/${id}`);
 
-  if (isLoading) {
+  if (isLoading || error) {
     return <h1>Loading...</h1>;
-  }
-
-  if (!data) {
-    return;
   }
 
   return (
