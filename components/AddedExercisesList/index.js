@@ -2,9 +2,9 @@ import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
 
 export default function AddedExercisesList() {
-  const { data, isLoading } = useSWR("/api/db");
+  const { data, isLoading, error } = useSWR("/api/db");
 
-  if (isLoading) {
+  if (isLoading || error) {
     return <h1>Loading...</h1>;
   }
 
