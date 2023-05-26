@@ -28,12 +28,9 @@ export default function OpenCardForm({ id }) {
     }
   }
 
-  useEffect(
-    (isLoading) => {
-      isLoading ? <p>...loading</p> : setCurrentSet(data.sets.length);
-    },
-    [data]
-  );
+  useEffect(() => {
+    isLoading ? <p>...loading</p> : setCurrentSet(data.sets.length + 1);
+  }, [data, isLoading]);
 
   return (
     <form onSubmit={handleSubmit}>
