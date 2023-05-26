@@ -11,8 +11,6 @@ export default function AddedSets({ id }) {
     return;
   }
 
-  //setCurrentSet(data.sets.length + 1);
-
   return (
     data.sets.length > 0 && (
       <ul>
