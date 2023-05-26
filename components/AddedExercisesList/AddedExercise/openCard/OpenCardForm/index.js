@@ -26,8 +26,8 @@ export default function OpenCardForm({ id }) {
     if (response.ok) {
       mutate();
     } else {
-      console.error(`Error: ${response.status}`);
-      console.error(`Error : ${error}`);
+      console.error(`Error Status: ${response.status}`);
+      console.error(`Error: ${error}`);
     }
   }
 
