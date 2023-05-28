@@ -8,11 +8,11 @@ export default function AddedExercise({ exercise }) {
     setOpenCard(!openCard);
   }
   return (
-    <li key={exercise.id} style={{ listStyleType: "none" }}>
+    <li key={exercise._id} style={{ listStyleType: "none" }}>
       <button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
       </button>
-      {openCard && <OpenCard id={exercise.id} />}
+      {openCard && <OpenCard id={exercise._id} />}
     </li>
   );
 }

@@ -1,9 +1,17 @@
-export default function AddedSets({ addedSet }) {
+import useSWR from "swr";
+
+export default function AddedSets({ id }) {
+  const { data, isLoading, error } = useSWR(`/api/db/${id}`);
+
+  if (isLoading || error) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    addedSet.length > 0 && (
+    data.sets.length > 0 && (
       <ul>
-        {addedSet.map((set) => (
-          <li key={set.set + set.repetitions}>
+        {data.sets.map((set) => (
+          <li key={set.id}>
             Set {set.set} - Repetitions: {set.repetitions}
           </li>
         ))}
