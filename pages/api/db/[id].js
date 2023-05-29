@@ -27,6 +27,15 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (request.method === "DELETE") {
+    await Exercise.findByIdAndDelete(id);
+
+    response
+      .status(200)
+      .json({ status: "Exercise with the id " + id + " deleted" });
+    return;
+  }
+
   response.status(501).json({ status: "Method not implemented." });
   return;
 }
