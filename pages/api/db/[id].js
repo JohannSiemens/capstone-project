@@ -17,9 +17,16 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "PUT") {
+    const headers = request.headers;
     const setsData = request.body;
-
-    await Exercise.findByIdAndUpdate(id, { $push: { sets: setsData } });
+    console.log(headers);
+    if (request.headers.deleteset) {
+      await Exercise.findByIdAndUpdate(id, {
+        $pull: { sets: { id: setsData } },
+      });
+    } else {
+      await Exercise.findByIdAndUpdate(id, { $push: { sets: setsData } });
+    }
 
     response
       .status(200)
