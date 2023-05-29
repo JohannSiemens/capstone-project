@@ -28,9 +28,9 @@ export default function AddedSets({ id }) {
   return (
     data.sets.length > 0 && (
       <ul>
-        {data.sets.map((set) => (
+        {data.sets.map((set, index) => (
           <li key={set.id}>
-            Set {set.set} - Repetitions: {set.repetitions}
+            Set {index + 1} - Repetitions: {set.repetitions}
             <button onClick={() => deleteSet(data._id, set.id)}>Delete</button>
           </li>
         ))}

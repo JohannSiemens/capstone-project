@@ -10,7 +10,6 @@ export default function OpenCardForm({ id }) {
     event.preventDefault();
     const exerciseInput = parseInt(event.target.elements.rep_input.value);
     const addedSet = {
-      set: currentSet,
       repetitions: exerciseInput,
       id: uuidv4(),
     };
