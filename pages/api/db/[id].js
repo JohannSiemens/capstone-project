@@ -25,9 +25,7 @@ export default async function handler(request, response) {
       });
     } else if (request.headers.editset) {
       const setID = setsData.setID;
-      console.log(setID);
       const repetitions = setsData.repetitions;
-      console.log("Repetitions: ", repetitions);
       await Exercise.findOneAndUpdate(
         { _id: id, "sets.id": setID },
         { $set: { "sets.$.repetitions": repetitions } }

@@ -29,8 +29,6 @@ export default function AddedSets({ id }) {
   }
 
   async function handleEdit(id, setID) {
-    console.log("SetID Client: ", setID);
-    console.log("ID Client: ", id);
     const repetitions = parseInt(inputRef.current.value);
     const response = await fetch(`/api/db/${id}`, {
       method: "PUT",
@@ -43,7 +41,7 @@ export default function AddedSets({ id }) {
 
     if (response.ok) {
       setIsEdit();
-      // mutate();
+      mutate();
     } else {
       console.error(`Error Status: ${response.status}`);
       console.error(`Error: ${error}`);
