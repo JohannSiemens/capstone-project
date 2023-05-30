@@ -17,13 +17,21 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "PUT") {
-    const headers = request.headers;
     const setsData = request.body;
-    console.log(headers);
+
     if (request.headers.deleteset) {
       await Exercise.findByIdAndUpdate(id, {
         $pull: { sets: { id: setsData } },
       });
+    } else if (request.headers.editset) {
+      const setID = setsData.setID;
+      console.log(setID);
+      const repetitions = setsData.repetitions;
+      console.log("Repetitions: ", repetitions);
+      await Exercise.findOneAndUpdate(
+        { _id: id, "sets.id": setID },
+        { $set: { "sets.$.repetitions": repetitions } }
+      );
     } else {
       await Exercise.findByIdAndUpdate(id, { $push: { sets: setsData } });
     }
