@@ -1,4 +1,3 @@
-import Link from "next/link";
 import NewWorkoutForm from "@/components/WorkoutsList/NewWorkoutForm";
 import { useState } from "react";
 import WorkoutsList from "@/components/WorkoutsList";

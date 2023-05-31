@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import Link from "next/link";
 
 export default function WorkoutsList() {
   const { data, isLoading, error } = useSWR("/api/workouts-db");
@@ -11,7 +12,7 @@ export default function WorkoutsList() {
     <ul>
       {data.map((workout) => (
         <li key={workout._id}>
-          <button>{workout.title}</button>
+          <Link href={`/workout/${workout._id}`}>{workout.title}</Link>
         </li>
       ))}
     </ul>
