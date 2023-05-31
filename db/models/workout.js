@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Exercise from "./exercise";
 
 const { Schema } = mongoose;
 

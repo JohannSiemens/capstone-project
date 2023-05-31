@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   const { id } = request.query;
 
   if (request.method === "GET") {
-    const workout = await Workout.findById(id);
+    const workout = await Workout.findById(id).populate("exercises");
 
     if (!workout) {
       return response.status(404).json({ status: "Not Found" });

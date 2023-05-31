@@ -1,8 +1,11 @@
 import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
 
-export default function AddedExercisesList() {
-  const { data, isLoading, isValidating, error } = useSWR(`/api/exercises-db`);
+export default function AddedExercisesList({ workoutID }) {
+  const { data, isLoading, isValidating, error } = useSWR(
+    `/api/workouts-db/${workoutID}`
+  );
+  console.log("Workout Data: ", data);
 
   if (isLoading || isValidating) {
     <p>...loading</p>;
@@ -16,7 +19,7 @@ export default function AddedExercisesList() {
   console.log(data);
   return (
     <ul>
-      {data.map((exercise) => (
+      {data.exercises.map((exercise) => (
         <AddedExercise exercise={exercise} key={exercise._id} />
       ))}
     </ul>
