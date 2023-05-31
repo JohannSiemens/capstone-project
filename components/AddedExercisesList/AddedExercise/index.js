@@ -4,10 +4,10 @@ import useSWR from "swr";
 
 export default function AddedExercise({ exercise }) {
   const [openCard, setOpenCard] = useState(false);
-  const { mutate } = useSWR(`/api/db`);
+  const { mutate } = useSWR(`/api/exercises-db`);
 
   async function deleteExercise(id) {
-    const response = await fetch(`/api/db/${id}`, {
+    const response = await fetch(`/api/exercises-db/${id}`, {
       method: "DELETE",
     });
 
