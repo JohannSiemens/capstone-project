@@ -1,14 +1,13 @@
-import ExerciseResults from "@/components/exercise-results";
-import ExerciseSearchForm from "@/components/exercise-search-form";
-import AddedExercisesList from "@/components/AddedExercisesList";
+import Link from "next/link";
 
-export default function HomePage({ exerciseResult, setExerciseResult }) {
+export default function Workouts() {
   return (
     <div>
-      <h1>My Workout</h1>
-      <ExerciseSearchForm setExerciseResult={setExerciseResult} />
-      <ExerciseResults exerciseResult={exerciseResult} />
-      <AddedExercisesList />
+      <h1>My Workouts</h1>
+      <button>
+        <Link href="./exercises">Workout</Link>
+      </button>
+      <button>New Workout</button>
     </div>
   );
 }
