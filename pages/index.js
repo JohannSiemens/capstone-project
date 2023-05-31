@@ -13,9 +13,6 @@ export default function Workouts() {
   return (
     <div>
       <h1>My Workouts</h1>
-      <button>
-        <Link href="./exercises">Workout</Link>
-      </button>
       <button onClick={newWorkoutSetter}>New Workout</button>
       {newWorkout && <NewWorkoutForm />}
       <WorkoutsList />

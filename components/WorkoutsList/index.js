@@ -6,11 +6,13 @@ export default function WorkoutsList() {
   if (isLoading || error) {
     return <h1>Loading...</h1>;
   }
-  console.log(data);
+
   return (
     <ul>
       {data.map((workout) => (
-        <li key={workout._id}>{workout.title}</li>
+        <li key={workout._id}>
+          <button>{workout.title}</button>
+        </li>
       ))}
     </ul>
   );
