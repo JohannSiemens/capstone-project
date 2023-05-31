@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
-  const { workout } = router.query;
+  const { id } = router.query;
 
   return (
     <div>
