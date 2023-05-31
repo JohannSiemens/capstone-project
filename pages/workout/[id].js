@@ -14,11 +14,12 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
 
   if (isLoading || isValidating) {
     <p>...loading</p>;
-  } else if (!data) {
-    return;
   } else if (error) {
     <p>An error occured!</p>;
     console.error(error);
+  }
+  if (!data) {
+    return;
   }
 
   return (
@@ -29,7 +30,7 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
       <h1>My Workout</h1>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults exerciseResult={exerciseResult} />
-      <AddedExercisesList exercises={data.exercises} />
+      <AddedExercisesList />
     </div>
   );
 }

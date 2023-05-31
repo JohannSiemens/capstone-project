@@ -1,14 +1,19 @@
 import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
 
-export default function AddedExercisesList({ exercises }) {
-  const { data, isLoading, error } = useSWR("/api/exercises-db");
-  console.log(exercises);
+export default function AddedExercisesList() {
+  const { data, isLoading, isValidating, error } = useSWR(`/api/exercises-db`);
 
-  if (isLoading || error) {
-    return <h1>Loading...</h1>;
+  if (isLoading || isValidating) {
+    <p>...loading</p>;
+  } else if (error) {
+    <p>An error occured!</p>;
+    console.error(error);
   }
-
+  if (!data) {
+    return;
+  }
+  console.log(data);
   return (
     <ul>
       {data.map((exercise) => (
