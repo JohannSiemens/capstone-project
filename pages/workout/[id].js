@@ -11,7 +11,6 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   const { data, isLoading, isValidating, error } = useSWR(
     `/api/workouts-db/${id}`
   );
-  console.log(data);
 
   if (isLoading || isValidating) {
     <p>...loading</p>;
@@ -30,7 +29,7 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
       </button>
       <h1>{data.title}</h1>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
-      <ExerciseResults exerciseResult={exerciseResult} />
+      <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
       <AddedExercisesList workoutID={data._id} />
     </div>
   );
