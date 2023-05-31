@@ -20,7 +20,11 @@ export default function AddedExercisesList({ workoutID }) {
   return (
     <ul>
       {data.exercises.map((exercise) => (
-        <AddedExercise exercise={exercise} key={exercise._id} />
+        <AddedExercise
+          exercise={exercise}
+          key={exercise._id}
+          workoutID={workoutID}
+        />
       ))}
     </ul>
   );
