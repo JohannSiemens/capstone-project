@@ -30,4 +30,5 @@ export default async function fetcher(request, response) {
   }
 
   response.status(501).json({ status: "Method not implemented." });
+  return;
 }

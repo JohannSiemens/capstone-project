@@ -2,10 +2,11 @@ import useSWR from "swr";
 
 export default function NewWorkoutForm() {
   const { mutate } = useSWR("/api/workouts-db");
+
   async function createWorkout(event) {
     event.preventDefault();
     const workout = event.target.elements.new_workout.value;
-    const response = fetch("/api/workouts-db", {
+    const response = await fetch("/api/workouts-db", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(workout),
