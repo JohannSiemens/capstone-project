@@ -19,11 +19,33 @@ export default async function handler(request, response) {
   if (request.method === "PUT") {
     const setsData = request.body;
 
-    await Exercise.findByIdAndUpdate(id, { $push: { sets: setsData } });
+    if (request.headers.deleteset) {
+      await Exercise.findByIdAndUpdate(id, {
+        $pull: { sets: { id: setsData } },
+      });
+    } else if (request.headers.editset) {
+      const setID = setsData.setID;
+      const repetitions = setsData.repetitions;
+      await Exercise.findOneAndUpdate(
+        { _id: id, "sets.id": setID },
+        { $set: { "sets.$.repetitions": repetitions } }
+      );
+    } else {
+      await Exercise.findByIdAndUpdate(id, { $push: { sets: setsData } });
+    }
 
     response
       .status(200)
       .json({ status: "Sets for exercise with id " + id + " changed" });
+    return;
+  }
+
+  if (request.method === "DELETE") {
+    await Exercise.findByIdAndDelete(id);
+
+    response
+      .status(200)
+      .json({ status: "Exercise with the id " + id + " deleted" });
     return;
   }
 
