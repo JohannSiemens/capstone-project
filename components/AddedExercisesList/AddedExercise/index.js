@@ -9,6 +9,7 @@ export default function AddedExercise({ exercise, workoutID }) {
   async function deleteExercise(id) {
     const response = await fetch(`/api/exercises-db/${id}`, {
       method: "DELETE",
+      headers: { workoutid: workoutID },
     });
 
     if (response.ok) {

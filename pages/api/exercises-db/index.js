@@ -15,8 +15,6 @@ export default async function fetcher(request, response) {
   if (request.method === "POST") {
     const exercisesData = request.body;
     const workoutID = request.headers.workoutid;
-    console.log("Headers: ", request.headers);
-    console.log("WorkoutID: ", workoutID);
 
     const newExercise = {
       _id: new mongoose.Types.ObjectId(),
