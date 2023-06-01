@@ -2,13 +2,14 @@ import OpenCard from "./openCard";
 import { useState } from "react";
 import useSWR from "swr";
 
-export default function AddedExercise({ exercise }) {
+export default function AddedExercise({ exercise, workoutID }) {
   const [openCard, setOpenCard] = useState(false);
-  const { mutate } = useSWR(`/api/db`);
+  const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);
 
   async function deleteExercise(id) {
-    const response = await fetch(`/api/db/${id}`, {
+    const response = await fetch(`/api/exercises-db/${id}`, {
       method: "DELETE",
+      headers: { workoutid: workoutID },
     });
 
     if (response.ok) {

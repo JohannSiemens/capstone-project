@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useState, useRef } from "react";
 
 export default function AddedSets({ id }) {
-  const { data, isLoading, error, mutate } = useSWR(`/api/db/${id}`);
+  const { data, isLoading, error, mutate } = useSWR(`/api/exercises-db/${id}`);
   const [isEdit, setIsEdit] = useState();
   const inputRef = useRef(null);
 
@@ -11,7 +11,7 @@ export default function AddedSets({ id }) {
   }
 
   async function deleteSet(id, setID) {
-    const response = await fetch(`/api/db/${id}`, {
+    const response = await fetch(`/api/exercises-db/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function AddedSets({ id }) {
 
   async function handleEdit(id, setID) {
     const repetitions = parseInt(inputRef.current.value);
-    const response = await fetch(`/api/db/${id}`, {
+    const response = await fetch(`/api/exercises-db/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

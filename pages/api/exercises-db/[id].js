@@ -1,5 +1,6 @@
 import dbConnect from "@/db/connect";
 import Exercise from "@/db/models/exercise";
+import Workout from "@/db/models/workout";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -41,7 +42,11 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "DELETE") {
+    const workoutID = request.headers.workoutid;
     await Exercise.findByIdAndDelete(id);
+    await Workout.findByIdAndUpdate(workoutID, {
+      $pull: { exercises: id },
+    });
 
     response
       .status(200)

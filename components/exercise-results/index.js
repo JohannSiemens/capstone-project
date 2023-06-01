@@ -1,14 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
 
-export default function ExerciseResults({ exerciseResult }) {
-  const { mutate } = useSWR("/api/db");
+export default function ExerciseResults({ exerciseResult, workoutID }) {
+  const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);
 
   async function addExercise(exercise) {
-    const response = await fetch("/api/db", {
+    const response = await fetch("/api/exercises-db", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        workoutID,
       },
       body: JSON.stringify(exercise),
     });

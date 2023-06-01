@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function OpenCardForm({ id }) {
   const [currentSet, setCurrentSet] = useState(1);
-  const { data, isLoading, mutate, error } = useSWR(`/api/db/${id}`);
+  const { data, isLoading, mutate, error } = useSWR(`/api/exercises-db/${id}`);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -14,7 +14,7 @@ export default function OpenCardForm({ id }) {
       id: uuidv4(),
     };
 
-    const response = await fetch(`/api/db/${id}`, {
+    const response = await fetch(`/api/exercises-db/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

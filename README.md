@@ -20,6 +20,7 @@ This project is created with:
 
 - React 18.2.0
 - Next.js 13.3.1
+- Atlas MongoDB
 
 ### Setup
 

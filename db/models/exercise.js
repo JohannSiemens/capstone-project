@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const exerciseSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   name: { type: String, required: true },
   type: { type: String, required: true },
   muscle: { type: String, required: true },

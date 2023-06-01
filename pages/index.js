@@ -1,14 +1,20 @@
-import ExerciseResults from "@/components/exercise-results";
-import ExerciseSearchForm from "@/components/exercise-search-form";
-import AddedExercisesList from "@/components/AddedExercisesList";
+import NewWorkoutForm from "@/components/WorkoutsList/NewWorkoutForm";
+import { useState } from "react";
+import WorkoutsList from "@/components/WorkoutsList";
 
-export default function HomePage({ exerciseResult, setExerciseResult }) {
+export default function Workouts() {
+  const [newWorkout, setNewWorkout] = useState(false);
+
+  function newWorkoutSetter() {
+    setNewWorkout(!newWorkout);
+  }
+
   return (
     <div>
-      <h1>My Workout</h1>
-      <ExerciseSearchForm setExerciseResult={setExerciseResult} />
-      <ExerciseResults exerciseResult={exerciseResult} />
-      <AddedExercisesList />
+      <h1>My Workouts</h1>
+      <button onClick={newWorkoutSetter}>New Workout</button>
+      {newWorkout && <NewWorkoutForm />}
+      <WorkoutsList />
     </div>
   );
 }
