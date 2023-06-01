@@ -5,7 +5,6 @@ export default function AddedExercisesList({ workoutID }) {
   const { data, isLoading, isValidating, error } = useSWR(
     `/api/workouts-db/${workoutID}`
   );
-  console.log("WorkoutID: ", workoutID);
 
   if (isLoading || isValidating) {
     <p>...loading</p>;
@@ -16,7 +15,7 @@ export default function AddedExercisesList({ workoutID }) {
   if (!data) {
     return;
   }
-  console.log(data);
+
   return (
     <ul>
       {data.exercises.map((exercise) => (
