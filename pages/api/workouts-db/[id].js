@@ -23,6 +23,16 @@ export default async function handler(request, response) {
       .json({ status: "Exercise with the id " + id + " deleted" });
     return;
   }
+  if (request.method === "PUT") {
+    const title = request.body;
+
+    await Workout.findByIdAndUpdate(id, { title: title });
+
+    response
+      .status(200)
+      .json({ status: "Title for workout with id " + id + " changed" });
+    return;
+  }
 
   response.status(501).json({ status: "Method not implemented." });
   return;
