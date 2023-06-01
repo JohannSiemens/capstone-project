@@ -7,24 +7,25 @@ export default function AddedExercisesList({ workoutID }) {
   );
 
   if (isLoading || isValidating) {
-    <p>...loading</p>;
+    return <p>...loading</p>;
   } else if (error) {
-    <p>An error occured!</p>;
-    console.error(error);
+    return <p>An error occured!{console.error(error)}</p>;
   }
   if (!data) {
-    return;
+    return null;
   }
 
   return (
-    <ul>
-      {data.exercises.map((exercise) => (
-        <AddedExercise
-          exercise={exercise}
-          key={exercise._id}
-          workoutID={workoutID}
-        />
-      ))}
-    </ul>
+    data.exercises.length > 0 && (
+      <ul>
+        {data.exercises.map((exercise) => (
+          <AddedExercise
+            exercise={exercise}
+            key={exercise._id}
+            workoutID={workoutID}
+          />
+        ))}
+      </ul>
+    )
   );
 }

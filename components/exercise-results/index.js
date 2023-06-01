@@ -9,7 +9,7 @@ export default function ExerciseResults({ exerciseResult, workoutID }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        workoutID: workoutID,
+        workoutID,
       },
       body: JSON.stringify(exercise),
     });

@@ -13,10 +13,9 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   );
 
   if (isLoading || isValidating) {
-    <p>...loading</p>;
+    return <p>...loading</p>;
   } else if (error) {
-    <p>An error occured!</p>;
-    console.error(error);
+    return <p>An error occured!{console.error(error)}</p>;
   }
   if (!data) {
     return;
