@@ -1,5 +1,6 @@
 import dbConnect from "@/db/connect";
 import Workout from "@/db/models/workout";
+import Exercise from "@/db/models/exercise";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -16,6 +17,7 @@ export default async function handler(request, response) {
     return;
   }
   if (request.method === "DELETE") {
+    await Exercise.deleteMany({ workoutID: id });
     await Workout.findByIdAndDelete(id);
 
     response
