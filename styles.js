@@ -14,6 +14,13 @@ export default createGlobalStyle`
   }
 `;
 
+export const StyledH1 = styled.h1`
+  text-align: center;
+  background-color: #8ac0db;
+  margin-top: 0px;
+  padding: 15px 0px;
+`;
+
 export const StyledButton = styled.button`
   font-size: 17px;
   padding: 0.5em 2em;
