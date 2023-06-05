@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import Link from "next/link";
 import { useState } from "react";
+import { StyledButton } from "@/styles";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -68,14 +69,20 @@ export default function WorkoutsList() {
                   required
                 />
               </label>
-              {workout._id === isEdit && <button type="submit">Submit</button>}
+              {workout._id === isEdit && (
+                <StyledButton type="submit">Submit</StyledButton>
+              )}
             </form>
           ) : (
             <Link href={`/workout/${workout._id}`}>{workout.title}</Link>
           )}
-          <button onClick={() => deleteWorkout(workout._id)}>Delete</button>
+          <StyledButton onClick={() => deleteWorkout(workout._id)}>
+            Delete
+          </StyledButton>
           {workout._id !== isEdit && (
-            <button onClick={() => isEditModeSetter(workout._id)}>Edit</button>
+            <StyledButton onClick={() => isEditModeSetter(workout._id)}>
+              Edit
+            </StyledButton>
           )}
         </li>
       ))}

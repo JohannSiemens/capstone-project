@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import { StyledButton } from "@/styles";
 
 export default function NewWorkoutForm() {
   const { mutate } = useSWR("/api/workouts-db");
@@ -30,7 +31,7 @@ export default function NewWorkoutForm() {
           required
         ></input>
       </label>
-      <button type="submit">Create</button>
+      <StyledButton type="submit">Create</StyledButton>
     </form>
   );
 }
