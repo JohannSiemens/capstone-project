@@ -18,6 +18,7 @@ export default async function fetcher(request, response) {
 
     const newExercise = {
       _id: new mongoose.Types.ObjectId(),
+      workoutID: workoutID,
       name: exercisesData.name,
       type: exercisesData.type,
       muscle: exercisesData.muscle,
