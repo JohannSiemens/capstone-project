@@ -24,18 +24,16 @@ export default createGlobalStyle`
 export const StyledCard = styled.div``;
 
 export const StyledLoader = styled.div`
-  .loader {
-    display: block;
-    --height-of-loader: 4px;
-    --loader-color: #0071e2;
-    width: 130px;
-    height: var(--height-of-loader);
-    border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #0071e2;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
 
-  .loader::before {
+  :before {
     content: "";
     position: absolute;
     background: var(--loader-color);
