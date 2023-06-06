@@ -52,6 +52,12 @@ export const StyledList = styled.ul`
   padding: 0;
 `;
 
+export const StyledButtonSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const StyledListItem = styled.li`
   width: 95%;
   height: 100px;
@@ -97,7 +103,8 @@ export const StyledLoader = styled.div`
 
 export const StyledH1 = styled.h1`
   text-align: center;
-  background-color: var(--main-heading-color);
+  background-color: var(--primary-color);
+  color: white;
   margin-top: 0px;
   padding: 15px 0px;
   font-family: openSans;

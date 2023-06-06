@@ -1,10 +1,13 @@
 import useSWR from "swr";
 import Link from "next/link";
 import { useState } from "react";
-import { StyledButton } from "@/styles";
-import { StyledLoader } from "@/styles";
-import { StyledList } from "@/styles";
-import { StyledListItem } from "@/styles";
+import {
+  StyledButton,
+  StyledLoader,
+  StyledList,
+  StyledListItem,
+  StyledButtonSection,
+} from "@/styles";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -79,14 +82,16 @@ export default function WorkoutsList() {
           ) : (
             <Link href={`/workout/${workout._id}`}>{workout.title}</Link>
           )}
-          <StyledButton onClick={() => deleteWorkout(workout._id)}>
-            Delete
-          </StyledButton>
-          {workout._id !== isEdit && (
-            <StyledButton onClick={() => isEditModeSetter(workout._id)}>
-              Edit
+          <StyledButtonSection>
+            <StyledButton onClick={() => deleteWorkout(workout._id)}>
+              Delete
             </StyledButton>
-          )}
+            {workout._id !== isEdit && (
+              <StyledButton onClick={() => isEditModeSetter(workout._id)}>
+                Edit
+              </StyledButton>
+            )}
+          </StyledButtonSection>
         </StyledListItem>
       ))}
     </StyledList>
