@@ -11,24 +11,61 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    margin: 0;
+  body { 
     font-family: openSans;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
   }
 
   html{
-    --main-heading-color: #8ac0db;
+    --primary-color: dodgerblue;
+    --secondary-color: white;
+  }
+
+  div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  li{
+    list-style-type: none;
   }
 `;
 
-export const StyledCard = styled.div``;
+export const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  height: 254px;
+  border-radius: 5px;
+  background: var(--secondary-color);
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  padding: 0;
+`;
+
+export const StyledListItem = styled.li`
+  width: 95%;
+  height: 100px;
+  border-radius: 5px;
+  background: #e0e0e0;
+  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  margin: 10px;
+  padding: 5px;
+`;
 
 export const StyledLoader = styled.div`
   display: block;
-  --height-of-loader: 4px;
-  --loader-color: #0071e2;
   width: 130px;
-  height: var(--height-of-loader);
+  height: 4px;
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
@@ -36,7 +73,7 @@ export const StyledLoader = styled.div`
   :before {
     content: "";
     position: absolute;
-    background: var(--loader-color);
+    background: var(--primary-color);
     top: 0;
     left: 0;
     width: 0%;
@@ -64,6 +101,7 @@ export const StyledH1 = styled.h1`
   margin-top: 0px;
   padding: 15px 0px;
   font-family: openSans;
+  width: 100%;
 `;
 
 export const StyledButton = styled.button`

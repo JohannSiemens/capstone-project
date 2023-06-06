@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { StyledButton } from "@/styles";
 import { StyledLoader } from "@/styles";
+import { StyledList } from "@/styles";
+import { StyledListItem } from "@/styles";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -50,9 +52,9 @@ export default function WorkoutsList() {
   }
 
   return (
-    <ul>
+    <StyledList>
       {data.map((workout) => (
-        <li key={workout._id}>
+        <StyledListItem key={workout._id}>
           {workout._id === isEdit ? (
             <form
               onSubmit={(event) => {
@@ -85,8 +87,8 @@ export default function WorkoutsList() {
               Edit
             </StyledButton>
           )}
-        </li>
+        </StyledListItem>
       ))}
-    </ul>
+    </StyledList>
   );
 }
