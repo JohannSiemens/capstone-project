@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 import { Open_Sans } from "@next/font/google";
+import Link from "next/link";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -34,10 +35,6 @@ export default createGlobalStyle`
     justify-content: center;
     margin: 0;
   }
-
-  li{
-    list-style-type: none;
-  }
 `;
 
 export const StyledList = styled.ul`
@@ -45,27 +42,38 @@ export const StyledList = styled.ul`
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 254px;
-  border-radius: 5px;
-  background: var(--secondary-color);
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  //height: 254px;
   padding: 0;
 `;
 
-export const StyledButtonSection = styled.section`
+export const StyledLink = styled(Link)`
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  padding-top: 0;
+`;
+
+export const StyledWrapper = styled.section`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  width: 100%;
 `;
 
 export const StyledListItem = styled.li`
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 95%;
-  height: 100px;
+  height: 120px;
   border-radius: 5px;
-  background: #e0e0e0;
-  box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  background: var(--secondary-color);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 10px;
-  padding: 5px;
+  padding: 0;
 `;
 
 export const StyledLoader = styled.div`

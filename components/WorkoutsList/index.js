@@ -6,7 +6,8 @@ import {
   StyledLoader,
   StyledList,
   StyledListItem,
-  StyledButtonSection,
+  StyledWrapper,
+  StyledLink,
 } from "@/styles";
 
 export default function WorkoutsList() {
@@ -80,9 +81,11 @@ export default function WorkoutsList() {
               )}
             </form>
           ) : (
-            <Link href={`/workout/${workout._id}`}>{workout.title}</Link>
+            <StyledLink href={`/workout/${workout._id}`}>
+              {workout.title}
+            </StyledLink>
           )}
-          <StyledButtonSection>
+          <StyledWrapper>
             <StyledButton onClick={() => deleteWorkout(workout._id)}>
               Delete
             </StyledButton>
@@ -91,7 +94,7 @@ export default function WorkoutsList() {
                 Edit
               </StyledButton>
             )}
-          </StyledButtonSection>
+          </StyledWrapper>
         </StyledListItem>
       ))}
     </StyledList>
