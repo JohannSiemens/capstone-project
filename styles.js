@@ -1,5 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
+import { Open_Sans } from "@next/font/google";
+
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export default createGlobalStyle`
   *,
@@ -10,15 +13,59 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: openSans;
+  }
+
+  html{
+    --main-heading-color: #8ac0db;
+  }
+`;
+
+export const StyledCard = styled.div``;
+
+export const StyledLoader = styled.div`
+  .loader {
+    display: block;
+    --height-of-loader: 4px;
+    --loader-color: #0071e2;
+    width: 130px;
+    height: var(--height-of-loader);
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .loader::before {
+    content: "";
+    position: absolute;
+    background: var(--loader-color);
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    animation: moving 1s ease-in-out infinite;
+  }
+
+  @keyframes moving {
+    50% {
+      width: 100%;
+    }
+
+    100% {
+      width: 0;
+      right: 0;
+      left: unset;
+    }
   }
 `;
 
 export const StyledH1 = styled.h1`
   text-align: center;
-  background-color: #8ac0db;
+  background-color: var(--main-heading-color);
   margin-top: 0px;
   padding: 15px 0px;
+  font-family: openSans;
 `;
 
 export const StyledButton = styled.button`

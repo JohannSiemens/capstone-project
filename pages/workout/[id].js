@@ -4,6 +4,7 @@ import AddedExercisesList from "@/components/AddedExercisesList";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { StyledLoader } from "@/styles";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   );
 
   if (isLoading || isValidating) {
-    return <p>...loading</p>;
+    return <StyledLoader />;
   } else if (error) {
     return <p>An error occured!{console.error(error)}</p>;
   }

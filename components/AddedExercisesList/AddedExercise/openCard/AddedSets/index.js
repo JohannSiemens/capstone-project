@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import { useState, useRef } from "react";
+import { StyledLoader } from "@/styles";
 
 export default function AddedSets({ id }) {
   const { data, isLoading, error, mutate } = useSWR(`/api/exercises-db/${id}`);
@@ -49,7 +50,7 @@ export default function AddedSets({ id }) {
   }
 
   if (isLoading || error) {
-    return <h1>Loading...</h1>;
+    return <StyledLoader />;
   }
 
   return (

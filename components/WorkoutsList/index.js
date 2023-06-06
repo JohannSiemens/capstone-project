@@ -2,13 +2,14 @@ import useSWR from "swr";
 import Link from "next/link";
 import { useState } from "react";
 import { StyledButton } from "@/styles";
+import { StyledLoader } from "@/styles";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
   const [isEdit, setIsEdit] = useState();
 
   if (isLoading || error) {
-    return <h1>Loading...</h1>;
+    return <StyledLoader />;
   }
 
   function isEditModeSetter(id) {
