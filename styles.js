@@ -69,13 +69,28 @@ export const StyledWrapperColumn = styled.section`
   align-items: center;
 `;
 
+export const StyledInput = styled.input`
+  margin: 10px 0px;
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #e8e8e8;
+  transition: 0.3s;
+
+  :focus {
+    outline-color: #e8e8e8;
+    background: #e8e8e8;
+    box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
+    transition: 0.3s;
+  }
+`;
+
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: space-evenly;
   height: 100px;
-  padding-top: 0;
 `;
 
 export const StyledListItem = styled.li`
