@@ -6,7 +6,7 @@ import {
   StyledLoader,
   StyledList,
   StyledListItem,
-  StyledWrapper,
+  StyledWrapperRow,
   StyledLink,
 } from "@/styles";
 
@@ -85,7 +85,7 @@ export default function WorkoutsList() {
               {workout.title}
             </StyledLink>
           )}
-          <StyledWrapper>
+          <StyledWrapperRow>
             <StyledButton onClick={() => deleteWorkout(workout._id)}>
               Delete
             </StyledButton>
@@ -94,7 +94,7 @@ export default function WorkoutsList() {
                 Edit
               </StyledButton>
             )}
-          </StyledWrapper>
+          </StyledWrapperRow>
         </StyledListItem>
       ))}
     </StyledList>

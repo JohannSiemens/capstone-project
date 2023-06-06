@@ -1,6 +1,6 @@
 import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
-import { StyledLoader } from "@/styles";
+import { StyledLoader, StyledList } from "@/styles";
 
 export default function AddedExercisesList({ workoutID }) {
   const { data, isLoading, isValidating, error } = useSWR(
@@ -18,7 +18,7 @@ export default function AddedExercisesList({ workoutID }) {
 
   return (
     data.exercises.length > 0 && (
-      <ul>
+      <StyledList>
         {data.exercises.map((exercise) => (
           <AddedExercise
             exercise={exercise}
@@ -26,7 +26,7 @@ export default function AddedExercisesList({ workoutID }) {
             workoutID={workoutID}
           />
         ))}
-      </ul>
+      </StyledList>
     )
   );
 }

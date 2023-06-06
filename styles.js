@@ -55,11 +55,27 @@ export const StyledLink = styled(Link)`
   padding-top: 0;
 `;
 
-export const StyledWrapper = styled.section`
+export const StyledWrapperRow = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
+`;
+
+export const StyledWrapperColumn = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  height: 100px;
+  padding-top: 0;
 `;
 
 export const StyledListItem = styled.li`

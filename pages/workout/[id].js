@@ -4,7 +4,7 @@ import AddedExercisesList from "@/components/AddedExercisesList";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { StyledLoader } from "@/styles";
+import { StyledLoader, StyledButton, StyledH1 } from "@/styles";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
@@ -24,10 +24,10 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
 
   return (
     <div>
-      <button>
+      <StyledH1>{data.title}</StyledH1>{" "}
+      <StyledButton>
         <Link href="../">Back</Link>
-      </button>
-      <h1>{data.title}</h1>
+      </StyledButton>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
       <AddedExercisesList workoutID={data._id} />

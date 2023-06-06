@@ -14,8 +14,11 @@ export default function Workouts() {
   return (
     <div>
       <StyledH1>My Workouts</StyledH1>
-      <StyledButton onClick={newWorkoutSetter}>New Workout</StyledButton>
-      {newWorkout && <NewWorkoutForm />}
+      {newWorkout ? (
+        <NewWorkoutForm setNewWorkout={setNewWorkout} />
+      ) : (
+        <StyledButton onClick={newWorkoutSetter}>New Workout</StyledButton>
+      )}
       <WorkoutsList />
     </div>
   );
