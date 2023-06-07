@@ -1,21 +1,21 @@
 import useSWR from "swr";
-import Link from "next/link";
 import { useState } from "react";
 import {
-  StyledButton,
-  StyledLoader,
-  StyledList,
   StyledListItem,
   StyledWrapperRow,
   StyledLink,
+  StyledInput,
 } from "@/styles";
+import StyledButton from "../StyledButton";
+import StyledList from "../StyledList";
+import Loader from "../Loader";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
   const [isEdit, setIsEdit] = useState();
 
   if (isLoading || error) {
-    return <StyledLoader />;
+    return <Loader />;
   }
 
   function isEditModeSetter(id) {
@@ -65,17 +65,16 @@ export default function WorkoutsList() {
                 editWorkout(event, workout._id);
               }}
             >
-              <label>
-                Name:
-                <input
-                  type="text"
-                  name="newWorkout"
-                  id="newWorkout"
-                  pattern="[A-Za-z]{1,20}"
-                  defaultValue={workout.title}
-                  required
-                />
-              </label>
+              <StyledInput
+                type="text"
+                name="newWorkout"
+                id="newWorkout"
+                pattern="[A-Za-z]{1,20}"
+                defaultValue={workout.title}
+                placeholder="New title ..."
+                required
+              />
+
               {workout._id === isEdit && (
                 <StyledButton type="submit">Submit</StyledButton>
               )}

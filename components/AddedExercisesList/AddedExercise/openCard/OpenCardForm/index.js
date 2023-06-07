@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
-import { StyledLoader } from "@/styles";
+import Loader from "@/components/Loader";
 
 export default function OpenCardForm({ id }) {
   const [currentSet, setCurrentSet] = useState(1);
@@ -32,7 +32,7 @@ export default function OpenCardForm({ id }) {
   }
 
   useEffect(() => {
-    isLoading ? <StyledLoader /> : setCurrentSet(data.sets.length + 1);
+    isLoading ? <Loader /> : setCurrentSet(data.sets.length + 1);
   }, [data, isLoading]);
 
   return (

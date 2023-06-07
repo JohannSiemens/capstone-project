@@ -1,7 +1,8 @@
 import OpenCard from "./openCard";
 import { useState } from "react";
 import useSWR from "swr";
-import { StyledListItem, StyledButton } from "@/styles";
+import { StyledListItem } from "@/styles";
+import StyledButton from "@/components/StyledButton";
 
 export default function AddedExercise({ exercise, workoutID }) {
   const [openCard, setOpenCard] = useState(false);

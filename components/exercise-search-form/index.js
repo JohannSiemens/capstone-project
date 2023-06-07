@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyledLoader } from "@/styles";
+import Loader from "../Loader";
 
 export default function ExerciseSearchForm({ setExerciseResult }) {
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
   return (
     <>
       {loading ? (
-        <StyledLoader />
+        <Loader />
       ) : (
         <form onSubmit={handleSubmit}>
           <label>

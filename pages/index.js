@@ -1,8 +1,8 @@
 import NewWorkoutForm from "@/components/WorkoutsList/NewWorkoutForm";
 import { useState } from "react";
 import WorkoutsList from "@/components/WorkoutsList";
-import { StyledButton } from "@/styles";
-import { StyledH1 } from "@/styles";
+import StyledButton from "@/components/StyledButton";
+import Typography from "@/components/StyledTypography";
 
 export default function Workouts() {
   const [newWorkout, setNewWorkout] = useState(false);
@@ -13,7 +13,7 @@ export default function Workouts() {
 
   return (
     <div>
-      <StyledH1>My Workouts</StyledH1>
+      <Typography variant="h1">My Workouts</Typography>
       {newWorkout ? (
         <NewWorkoutForm setNewWorkout={setNewWorkout} />
       ) : (

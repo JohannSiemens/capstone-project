@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
-import { StyledButton } from "@/styles";
+import StyledButton from "../StyledButton";
 
 export default function ExerciseResults({ exerciseResult, workoutID }) {
   const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);

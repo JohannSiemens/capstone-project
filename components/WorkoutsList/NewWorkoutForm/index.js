@@ -1,5 +1,6 @@
 import useSWR from "swr";
-import { StyledButton, StyledForm, StyledInput } from "@/styles";
+import { StyledForm, StyledInput } from "@/styles";
+import StyledButton from "@/components/StyledButton";
 
 export default function NewWorkoutForm({ setNewWorkout }) {
   const { mutate } = useSWR("/api/workouts-db");
@@ -21,7 +22,7 @@ export default function NewWorkoutForm({ setNewWorkout }) {
   }
 
   return (
-    <StyledForm onSubmit={createWorkout}>
+    <StyledForm className="big" onSubmit={createWorkout}>
       <StyledButton type="submit">Create</StyledButton>
 
       <StyledInput

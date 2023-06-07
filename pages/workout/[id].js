@@ -4,7 +4,9 @@ import AddedExercisesList from "@/components/AddedExercisesList";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { StyledLoader, StyledButton, StyledH1 } from "@/styles";
+import Loader from "@/components/Loader";
+import StyledButton from "@/components/StyledButton";
+import Typography from "@/components/StyledTypography";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
@@ -14,7 +16,7 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   );
 
   if (isLoading || isValidating) {
-    return <StyledLoader />;
+    return <Loader />;
   } else if (error) {
     return <p>An error occured!{console.error(error)}</p>;
   }
@@ -24,7 +26,7 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
 
   return (
     <div>
-      <StyledH1>{data.title}</StyledH1>{" "}
+      <Typography variant="h1">{data.title}</Typography>
       <StyledButton>
         <Link href="../">Back</Link>
       </StyledButton>

@@ -37,15 +37,6 @@ export default createGlobalStyle`
   }
 `;
 
-export const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  //height: 254px;
-  padding: 0;
-`;
-
 export const StyledLink = styled(Link)`
   text-align: center;
   width: 100%;
@@ -57,7 +48,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledWrapperRow = styled.section`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
 `;
@@ -76,6 +67,7 @@ export const StyledInput = styled.input`
   border-radius: 1rem;
   background: #e8e8e8;
   transition: 0.3s;
+  width: 80%;
 
   :focus {
     outline-color: #e8e8e8;
@@ -88,9 +80,17 @@ export const StyledInput = styled.input`
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: space-evenly;
-  height: 100px;
+
+  .big {
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .one-input {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const StyledListItem = styled.li`
@@ -105,70 +105,4 @@ export const StyledListItem = styled.li`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 10px;
   padding: 0;
-`;
-
-export const StyledLoader = styled.div`
-  display: block;
-  width: 130px;
-  height: 4px;
-  border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.2);
-  position: relative;
-
-  :before {
-    content: "";
-    position: absolute;
-    background: var(--primary-color);
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    border-radius: 30px;
-    animation: moving 1s ease-in-out infinite;
-  }
-
-  @keyframes moving {
-    50% {
-      width: 100%;
-    }
-
-    100% {
-      width: 0;
-      right: 0;
-      left: unset;
-    }
-  }
-`;
-
-export const StyledH1 = styled.h1`
-  text-align: center;
-  background-color: var(--primary-color);
-  color: white;
-  margin-top: 0px;
-  padding: 15px 0px;
-  font-family: openSans;
-  width: 100%;
-`;
-
-export const StyledButton = styled.button`
-  font-size: 17px;
-  padding: 0.5em 2em;
-  border: transparent;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  background: dodgerblue;
-  color: white;
-  border-radius: 4px;
-
-  :hover {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(
-      90deg,
-      rgba(30, 144, 255, 1) 0%,
-      rgba(0, 212, 255, 1) 100%
-    );
-  }
-
-  :active {
-    transform: translate(0em, 0.2em);
-  }
 `;

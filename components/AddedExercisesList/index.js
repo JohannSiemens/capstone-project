@@ -1,6 +1,6 @@
 import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
-import { StyledLoader, StyledList } from "@/styles";
+import Loader from "../Loader";
 
 export default function AddedExercisesList({ workoutID }) {
   const { data, isLoading, isValidating, error } = useSWR(
@@ -8,7 +8,7 @@ export default function AddedExercisesList({ workoutID }) {
   );
 
   if (isLoading || isValidating) {
-    return <StyledLoader />;
+    return <Loader />;
   } else if (error) {
     return <p>An error occured!{console.error(error)}</p>;
   }
@@ -18,7 +18,7 @@ export default function AddedExercisesList({ workoutID }) {
 
   return (
     data.exercises.length > 0 && (
-      <StyledList>
+      <ul>
         {data.exercises.map((exercise) => (
           <AddedExercise
             exercise={exercise}
@@ -26,7 +26,7 @@ export default function AddedExercisesList({ workoutID }) {
             workoutID={workoutID}
           />
         ))}
-      </StyledList>
+      </ul>
     )
   );
 }
