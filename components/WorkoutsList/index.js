@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { useState } from "react";
-import { StyledLink } from "@/styles";
+import StyledLink from "../StyledLink";
 import Button from "../Button";
 import List from "../List";
 import Loader from "../Loader";
