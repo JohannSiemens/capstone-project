@@ -24,7 +24,7 @@ export default function AddedExercise({ exercise, workoutID }) {
     setOpenCard(!openCard);
   }
   return (
-    <ul variant="li" key={exercise._id} style={{ listStyleType: "none" }}>
+    <ul key={exercise._id} style={{ listStyleType: "none" }}>
       <button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
       </button>
