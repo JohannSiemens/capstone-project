@@ -1,7 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { Open_Sans } from "@next/font/google";
-
-const openSans = Open_Sans({ subsets: ["latin"] });
 
 export default createGlobalStyle`
   *,
@@ -11,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body { 
-    font-family: openSans;
+    font-family: 'Open Sans';
     width: 100%;
     display: flex;
     flex-direction: column;
