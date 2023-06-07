@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { StyledInput } from "@/styles";
+import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Form from "@/components/Form";
 
@@ -25,14 +25,14 @@ export default function NewWorkoutForm({ setNewWorkout }) {
   return (
     <Form variant="small" onSubmit={createWorkout}>
       <Button type="submit">Create</Button>
-      <StyledInput
+      <Input
         type="text"
         name="new_workout"
         id="new_workout"
         pattern="[A-Za-z]{1,20}"
         placeholder="Workout title ..."
         required
-      ></StyledInput>
+      ></Input>
     </Form>
   );
 }

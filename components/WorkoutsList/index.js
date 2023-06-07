@@ -1,14 +1,10 @@
 import useSWR from "swr";
 import { useState } from "react";
-import {
-  StyledListItem,
-  StyledWrapperRow,
-  StyledLink,
-  StyledInput,
-} from "@/styles";
+import { StyledWrapperRow, StyledLink } from "@/styles";
 import Button from "../Button";
 import List from "../List";
 import Loader from "../Loader";
+import Input from "../Input";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -56,16 +52,16 @@ export default function WorkoutsList() {
   }
 
   return (
-    <List>
+    <List variant="ul">
       {data.map((workout) => (
-        <StyledListItem key={workout._id}>
+        <List variant="li" key={workout._id}>
           {workout._id === isEdit ? (
             <form
               onSubmit={(event) => {
                 editWorkout(event, workout._id);
               }}
             >
-              <StyledInput
+              <Input
                 type="text"
                 name="newWorkout"
                 id="newWorkout"
@@ -90,7 +86,7 @@ export default function WorkoutsList() {
               </Button>
             )}
           </StyledWrapperRow>
-        </StyledListItem>
+        </List>
       ))}
     </List>
   );

@@ -1,7 +1,7 @@
 import OpenCard from "./openCard";
 import { useState } from "react";
 import useSWR from "swr";
-import { StyledListItem } from "@/styles";
+import List from "@/components/List";
 import Button from "@/components/Button";
 
 export default function AddedExercise({ exercise, workoutID }) {
@@ -26,7 +26,7 @@ export default function AddedExercise({ exercise, workoutID }) {
     setOpenCard(!openCard);
   }
   return (
-    <StyledListItem key={exercise._id} style={{ listStyleType: "none" }}>
+    <List variant="li" key={exercise._id} style={{ listStyleType: "none" }}>
       <Button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
       </Button>
@@ -36,6 +36,6 @@ export default function AddedExercise({ exercise, workoutID }) {
       <br />
       <br />
       {openCard && <OpenCard id={exercise._id} />}
-    </StyledListItem>
+    </List>
   );
 }
