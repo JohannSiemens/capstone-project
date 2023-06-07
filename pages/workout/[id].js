@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Loader from "@/components/Loader";
-import Button from "@/components/Button";
 import Typography from "@/components/Typography";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
@@ -27,9 +26,9 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   return (
     <div>
       <Typography variant="h1">{data.title}</Typography>
-      <Button>
+      <button>
         <Link href="../">Back</Link>
-      </Button>
+      </button>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
       <AddedExercisesList workoutID={data._id} />

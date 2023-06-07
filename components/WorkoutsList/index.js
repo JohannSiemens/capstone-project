@@ -1,10 +1,11 @@
 import useSWR from "swr";
 import { useState } from "react";
-import { StyledWrapperRow, StyledLink } from "@/styles";
+import { StyledLink } from "@/styles";
 import Button from "../Button";
 import List from "../List";
 import Loader from "../Loader";
 import Input from "../Input";
+import Wrapper from "../Wrapper";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -78,14 +79,14 @@ export default function WorkoutsList() {
               {workout.title}
             </StyledLink>
           )}
-          <StyledWrapperRow>
+          <Wrapper variant="row">
             <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
             {workout._id !== isEdit && (
               <Button onClick={() => isEditModeSetter(workout._id)}>
                 Edit
               </Button>
             )}
-          </StyledWrapperRow>
+          </Wrapper>
         </List>
       ))}
     </List>

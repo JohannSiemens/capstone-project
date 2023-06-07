@@ -1,8 +1,6 @@
 import OpenCard from "./openCard";
 import { useState } from "react";
 import useSWR from "swr";
-import List from "@/components/List";
-import Button from "@/components/Button";
 
 export default function AddedExercise({ exercise, workoutID }) {
   const [openCard, setOpenCard] = useState(false);
@@ -26,16 +24,16 @@ export default function AddedExercise({ exercise, workoutID }) {
     setOpenCard(!openCard);
   }
   return (
-    <List variant="li" key={exercise._id} style={{ listStyleType: "none" }}>
-      <Button onClick={openCardSetter}>
+    <ul variant="li" key={exercise._id} style={{ listStyleType: "none" }}>
+      <button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
-      </Button>
-      <Button onClick={() => deleteExercise(exercise._id)}>
+      </button>
+      <button onClick={() => deleteExercise(exercise._id)}>
         Delete exercise
-      </Button>
+      </button>
       <br />
       <br />
       {openCard && <OpenCard id={exercise._id} />}
-    </List>
+    </ul>
   );
 }

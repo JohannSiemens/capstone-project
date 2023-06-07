@@ -45,17 +45,3 @@ export const StyledLink = styled(Link)`
   font-size: 25px;
   padding-top: 0;
 `;
-
-export const StyledWrapperRow = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
-
-export const StyledWrapperColumn = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-`;
