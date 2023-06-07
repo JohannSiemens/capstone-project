@@ -1,33 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const WrapperRow = styled.section`
+const Wrapper = styled.section`
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-`;
 
-const WrapperColumn = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+  ${({ variant }) => {
+    if (variant === "column") {
+      return css`
+        flex-direction: column;
+        justify-content: space-evenly;
+      `;
+    } else if (variant === "row") {
+      return css`
+        justify-content: center;
+        width: 100%;
+      `;
+    }
+  }}
 `;
-
-const Wrapper = ({ children, variant, component, ...props }) => {
-  if (variant === "row") {
-    return (
-      <WrapperRow as={component} {...props}>
-        {children}
-      </WrapperRow>
-    );
-  } else if (variant === "column") {
-    return (
-      <WrapperColumn as={component} {...props}>
-        {children}
-      </WrapperColumn>
-    );
-  }
-};
 
 export default Wrapper;
