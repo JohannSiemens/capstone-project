@@ -1,6 +1,7 @@
 import useSWR from "swr";
-import { StyledForm, StyledInput } from "@/styles";
+import { StyledInput } from "@/styles";
 import Button from "@/components/Button";
+import Form from "@/components/Form";
 
 export default function NewWorkoutForm({ setNewWorkout }) {
   const { mutate } = useSWR("/api/workouts-db");
@@ -22,7 +23,7 @@ export default function NewWorkoutForm({ setNewWorkout }) {
   }
 
   return (
-    <StyledForm className="big" onSubmit={createWorkout}>
+    <Form variant="small" onSubmit={createWorkout}>
       <Button type="submit">Create</Button>
       <StyledInput
         type="text"
@@ -32,6 +33,6 @@ export default function NewWorkoutForm({ setNewWorkout }) {
         placeholder="Workout title ..."
         required
       ></StyledInput>
-    </StyledForm>
+    </Form>
   );
 }

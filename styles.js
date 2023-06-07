@@ -77,22 +77,6 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-
-  .big {
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .one-input {
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
 export const StyledListItem = styled.li`
   list-style-type: none;
   display: flex;
