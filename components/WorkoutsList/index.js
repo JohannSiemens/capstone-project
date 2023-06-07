@@ -55,7 +55,7 @@ export default function WorkoutsList() {
   return (
     <List variant="ul">
       {data.map((workout) => (
-        <List variant="li" key={workout._id}>
+        <List item key={workout._id}>
           {workout._id === isEdit ? (
             <form
               onSubmit={(event) => {

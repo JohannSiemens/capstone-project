@@ -22,14 +22,14 @@ const ListItem = styled.li`
   padding: 0;
 `;
 
-const List = ({ children, variant, component, ...props }) => {
+const List = ({ children, variant, item, component, ...props }) => {
   if (variant === "ul") {
     return (
       <UnsortedList as={component} {...props}>
         {children}
       </UnsortedList>
     );
-  } else if (variant === "li") {
+  } else if (item) {
     return (
       <ListItem as={component} {...props}>
         {children}
