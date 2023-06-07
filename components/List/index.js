@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledList = styled.ul`
+const List = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,4 +9,4 @@ const StyledList = styled.ul`
   padding: 0;
 `;
 
-export default StyledList;
+export default List;

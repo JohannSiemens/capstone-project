@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+const Button = styled.button`
   font-size: 17px;
   padding: 0.5em 2em;
   border: transparent;
@@ -24,4 +24,4 @@ const StyledButton = styled.button`
   }
 `;
 
-export default StyledButton;
+export default Button;

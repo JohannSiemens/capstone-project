@@ -1,8 +1,8 @@
 import NewWorkoutForm from "@/components/WorkoutsList/NewWorkoutForm";
 import { useState } from "react";
 import WorkoutsList from "@/components/WorkoutsList";
-import StyledButton from "@/components/StyledButton";
-import Typography from "@/components/StyledTypography";
+import Button from "@/components/Button";
+import Typography from "@/components/Typography";
 
 export default function Workouts() {
   const [newWorkout, setNewWorkout] = useState(false);
@@ -17,7 +17,7 @@ export default function Workouts() {
       {newWorkout ? (
         <NewWorkoutForm setNewWorkout={setNewWorkout} />
       ) : (
-        <StyledButton onClick={newWorkoutSetter}>New Workout</StyledButton>
+        <Button onClick={newWorkoutSetter}>New Workout</Button>
       )}
       <WorkoutsList />
     </div>

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
-import StyledButton from "../StyledButton";
+import Button from "../Button";
 
 export default function ExerciseResults({ exerciseResult, workoutID }) {
   const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);
@@ -27,7 +27,7 @@ export default function ExerciseResults({ exerciseResult, workoutID }) {
       {exerciseResult.map((exercise) => (
         <li key={uuidv4()} style={{ listStyleType: "none" }}>
           {exercise.name}
-          <StyledButton onClick={() => addExercise(exercise)}>Add</StyledButton>
+          <Button onClick={() => addExercise(exercise)}>Add</Button>
         </li>
       ))}
     </ul>

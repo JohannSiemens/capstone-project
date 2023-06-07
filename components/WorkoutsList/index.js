@@ -6,8 +6,8 @@ import {
   StyledLink,
   StyledInput,
 } from "@/styles";
-import StyledButton from "../StyledButton";
-import StyledList from "../StyledList";
+import Button from "../Button";
+import List from "../List";
 import Loader from "../Loader";
 
 export default function WorkoutsList() {
@@ -56,7 +56,7 @@ export default function WorkoutsList() {
   }
 
   return (
-    <StyledList>
+    <List>
       {data.map((workout) => (
         <StyledListItem key={workout._id}>
           {workout._id === isEdit ? (
@@ -75,9 +75,7 @@ export default function WorkoutsList() {
                 required
               />
 
-              {workout._id === isEdit && (
-                <StyledButton type="submit">Submit</StyledButton>
-              )}
+              {workout._id === isEdit && <Button type="submit">Submit</Button>}
             </form>
           ) : (
             <StyledLink href={`/workout/${workout._id}`}>
@@ -85,17 +83,15 @@ export default function WorkoutsList() {
             </StyledLink>
           )}
           <StyledWrapperRow>
-            <StyledButton onClick={() => deleteWorkout(workout._id)}>
-              Delete
-            </StyledButton>
+            <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
             {workout._id !== isEdit && (
-              <StyledButton onClick={() => isEditModeSetter(workout._id)}>
+              <Button onClick={() => isEditModeSetter(workout._id)}>
                 Edit
-              </StyledButton>
+              </Button>
             )}
           </StyledWrapperRow>
         </StyledListItem>
       ))}
-    </StyledList>
+    </List>
   );
 }

@@ -2,7 +2,7 @@ import OpenCard from "./openCard";
 import { useState } from "react";
 import useSWR from "swr";
 import { StyledListItem } from "@/styles";
-import StyledButton from "@/components/StyledButton";
+import Button from "@/components/Button";
 
 export default function AddedExercise({ exercise, workoutID }) {
   const [openCard, setOpenCard] = useState(false);
@@ -27,12 +27,12 @@ export default function AddedExercise({ exercise, workoutID }) {
   }
   return (
     <StyledListItem key={exercise._id} style={{ listStyleType: "none" }}>
-      <StyledButton onClick={openCardSetter}>
+      <Button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
-      </StyledButton>
-      <StyledButton onClick={() => deleteExercise(exercise._id)}>
+      </Button>
+      <Button onClick={() => deleteExercise(exercise._id)}>
         Delete exercise
-      </StyledButton>
+      </Button>
       <br />
       <br />
       {openCard && <OpenCard id={exercise._id} />}
