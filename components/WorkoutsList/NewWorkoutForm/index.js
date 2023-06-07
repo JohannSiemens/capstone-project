@@ -32,7 +32,7 @@ export default function NewWorkoutForm({ setNewWorkout }) {
         pattern="[A-Za-z]{1,20}"
         placeholder="Workout title ..."
         required
-      ></Input>
+      />
     </Form>
   );
 }
