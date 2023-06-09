@@ -24,7 +24,7 @@ export default function AddedExercise({ exercise, workoutID }) {
     setOpenCard(!openCard);
   }
   return (
-    <ul key={exercise._id} style={{ listStyleType: "none" }}>
+    <li key={exercise._id} style={{ listStyleType: "none" }}>
       <button onClick={openCardSetter}>
         {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
       </button>
@@ -34,6 +34,6 @@ export default function AddedExercise({ exercise, workoutID }) {
       <br />
       <br />
       {openCard && <OpenCard id={exercise._id} />}
-    </ul>
+    </li>
   );
 }
