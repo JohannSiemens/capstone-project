@@ -15,7 +15,7 @@ export default function Workouts() {
     <div>
       <Typography variant="h1">My Workouts</Typography>
       {newWorkout ? (
-        <NewWorkoutForm setNewWorkout={setNewWorkout} />
+        <NewWorkoutForm newWorkoutSetter={newWorkoutSetter} />
       ) : (
         <Button onClick={newWorkoutSetter}>New Workout</Button>
       )}

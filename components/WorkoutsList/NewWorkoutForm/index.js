@@ -3,7 +3,7 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Form from "@/components/Form";
 
-export default function NewWorkoutForm({ setNewWorkout }) {
+export default function NewWorkoutForm({ newWorkoutSetter }) {
   const { mutate } = useSWR("/api/workouts-db");
 
   async function createWorkout(event) {
@@ -16,7 +16,7 @@ export default function NewWorkoutForm({ setNewWorkout }) {
     });
     if (response.ok) {
       mutate();
-      setNewWorkout(false);
+      newWorkoutSetter();
     } else {
       console.error(`Error: ${response.status}`);
     }
