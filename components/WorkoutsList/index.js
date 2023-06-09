@@ -53,7 +53,7 @@ export default function WorkoutsList() {
   }
 
   return (
-    <List variant="ul">
+    <List>
       {data.map((workout) => (
         <List item key={workout._id}>
           {workout._id === isEdit ? (

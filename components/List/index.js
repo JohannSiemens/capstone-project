@@ -22,7 +22,7 @@ const ListItem = styled.li`
   padding: 0;
 `;
 
-const List = ({ children, variant, item, component, ...props }) => {
+const List = ({ children, item, component, ...props }) => {
   if (item) {
     return (
       <ListItem as={component} {...props}>
@@ -31,9 +31,9 @@ const List = ({ children, variant, item, component, ...props }) => {
     );
   } else {
     return (
-      <ListItem as={component} {...props}>
+      <UnsortedList as={component} {...props}>
         {children}
-      </ListItem>
+      </UnsortedList>
     );
   }
 };
