@@ -23,13 +23,13 @@ const ListItem = styled.li`
 `;
 
 const List = ({ children, variant, item, component, ...props }) => {
-  if (variant === "ul") {
+  if (item) {
     return (
-      <UnsortedList as={component} {...props}>
+      <ListItem as={component} {...props}>
         {children}
-      </UnsortedList>
+      </ListItem>
     );
-  } else if (item) {
+  } else {
     return (
       <ListItem as={component} {...props}>
         {children}
