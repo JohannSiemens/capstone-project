@@ -1,6 +1,8 @@
 import NewWorkoutForm from "@/components/WorkoutsList/NewWorkoutForm";
 import { useState } from "react";
 import WorkoutsList from "@/components/WorkoutsList";
+import Button from "@/components/Button";
+import Typography from "@/components/Typography";
 
 export default function Workouts() {
   const [newWorkout, setNewWorkout] = useState(false);
@@ -11,9 +13,12 @@ export default function Workouts() {
 
   return (
     <div>
-      <h1>My Workouts</h1>
-      <button onClick={newWorkoutSetter}>New Workout</button>
-      {newWorkout && <NewWorkoutForm />}
+      <Typography variant="h1">My Workouts</Typography>
+      {newWorkout ? (
+        <NewWorkoutForm newWorkoutSetter={newWorkoutSetter} />
+      ) : (
+        <Button onClick={newWorkoutSetter}>New Workout</Button>
+      )}
       <WorkoutsList />
     </div>
   );

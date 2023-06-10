@@ -1,5 +1,6 @@
 import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
+import Loader from "../Loader";
 
 export default function AddedExercisesList({ workoutID }) {
   const { data, isLoading, isValidating, error } = useSWR(
@@ -7,7 +8,7 @@ export default function AddedExercisesList({ workoutID }) {
   );
 
   if (isLoading || isValidating) {
-    return <p>...loading</p>;
+    return <Loader />;
   } else if (error) {
     return <p>An error occured!{console.error(error)}</p>;
   }

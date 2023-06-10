@@ -1,13 +1,18 @@
 import useSWR from "swr";
-import Link from "next/link";
 import { useState } from "react";
+import StyledLink from "../StyledLink";
+import Button from "../Button";
+import List from "../List";
+import Loader from "../Loader";
+import Input from "../Input";
+import Wrapper from "../Wrapper";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
   const [isEdit, setIsEdit] = useState();
 
   if (isLoading || error) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   function isEditModeSetter(id) {
@@ -48,37 +53,42 @@ export default function WorkoutsList() {
   }
 
   return (
-    <ul>
+    <List>
       {data.map((workout) => (
-        <li key={workout._id}>
+        <List item key={workout._id}>
           {workout._id === isEdit ? (
             <form
               onSubmit={(event) => {
                 editWorkout(event, workout._id);
               }}
             >
-              <label>
-                Name:
-                <input
-                  type="text"
-                  name="newWorkout"
-                  id="newWorkout"
-                  pattern="[A-Za-z]{1,20}"
-                  defaultValue={workout.title}
-                  required
-                />
-              </label>
-              {workout._id === isEdit && <button type="submit">Submit</button>}
+              <Input
+                type="text"
+                name="newWorkout"
+                id="newWorkout"
+                pattern="[A-Za-z]{1,20}"
+                defaultValue={workout.title}
+                placeholder="New title ..."
+                required
+              />
+
+              {workout._id === isEdit && <Button type="submit">Submit</Button>}
             </form>
           ) : (
-            <Link href={`/workout/${workout._id}`}>{workout.title}</Link>
+            <StyledLink href={`/workout/${workout._id}`}>
+              {workout.title}
+            </StyledLink>
           )}
-          <button onClick={() => deleteWorkout(workout._id)}>Delete</button>
-          {workout._id !== isEdit && (
-            <button onClick={() => isEditModeSetter(workout._id)}>Edit</button>
-          )}
-        </li>
+          <Wrapper variant="row">
+            <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
+            {workout._id !== isEdit && (
+              <Button onClick={() => isEditModeSetter(workout._id)}>
+                Edit
+              </Button>
+            )}
+          </Wrapper>
+        </List>
       ))}
-    </ul>
+    </List>
   );
 }

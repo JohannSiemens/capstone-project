@@ -1,5 +1,11 @@
+import { useState } from "react";
+import Loader from "../Loader";
+
 export default function ExerciseSearchForm({ setExerciseResult }) {
+  const [loading, setLoading] = useState(false);
+
   async function handleSubmit(event) {
+    setLoading(true);
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
@@ -9,21 +15,28 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
     responseData.length === 0
       ? alert("No exercises found")
       : setExerciseResult(responseData);
+    setLoading(false);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Exercise:
-        <input
-          type="text"
-          name="exercise_search"
-          id="exercise_search"
-          pattern="[A-Za-z]{3,20}"
-          required
-        />
-      </label>
-      <button type="submit">Search</button>
-    </form>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label>
+            Exercise:
+            <input
+              type="text"
+              name="exercise_search"
+              id="exercise_search"
+              pattern="[A-Za-z]{3,20}"
+              required
+            />
+          </label>
+          <button type="submit">Search</button>
+        </form>
+      )}
+    </>
   );
 }

@@ -4,6 +4,8 @@ import AddedExercisesList from "@/components/AddedExercisesList";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Loader from "@/components/Loader";
+import Typography from "@/components/Typography";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
@@ -13,7 +15,7 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   );
 
   if (isLoading || isValidating) {
-    return <p>...loading</p>;
+    return <Loader />;
   } else if (error) {
     return <p>An error occured!{console.error(error)}</p>;
   }
@@ -23,10 +25,10 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
 
   return (
     <div>
+      <Typography variant="h1">{data.title}</Typography>
       <button>
         <Link href="../">Back</Link>
       </button>
-      <h1>{data.title}</h1>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
       <AddedExercisesList workoutID={data._id} />
