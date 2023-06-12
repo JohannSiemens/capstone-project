@@ -15,7 +15,6 @@ export default function WorkoutsList() {
 
   function isEditModeSetter(id) {
     isEdit === id ? setIsEdit("") : setIsEdit(id);
-    console.log("Is Edit ID: ", id);
   }
 
   async function deleteWorkout(id) {

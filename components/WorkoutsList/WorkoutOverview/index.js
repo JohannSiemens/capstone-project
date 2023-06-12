@@ -11,8 +11,12 @@ export default function WorkoutOverview({
     <>
       <StyledLink href={`/workout/${workout._id}`}>{workout.title}</StyledLink>
       <Wrapper variant="row">
-        <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
-        <Button onClick={() => isEditModeSetter(workout._id)}>Edit</Button>
+        <Button type="button" onClick={() => deleteWorkout(workout._id)}>
+          Delete
+        </Button>
+        <Button type="button" onClick={() => isEditModeSetter(workout._id)}>
+          Edit
+        </Button>
       </Wrapper>
     </>
   );

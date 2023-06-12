@@ -14,18 +14,24 @@ export default function WorkoutEditForm({
         editWorkout(event, workout._id);
       }}
     >
-      <Input
-        type="text"
-        name="newWorkout"
-        id="newWorkout"
-        pattern="[A-Za-z]{1,20}"
-        defaultValue={workout.title}
-        placeholder="New title ..."
-        required
-      />
+      <label>
+        Workout Title:
+        <Input
+          type="text"
+          name="newWorkout"
+          id="newWorkout"
+          pattern="[A-Za-z]{1,20}"
+          defaultValue={workout.title}
+          placeholder="New title ..."
+          required
+        />
+      </label>
+
       <Wrapper variant="row">
         <Button type="submit">Submit</Button>
-        <Button onClick={() => isEditModeSetter(workout._id)}>Leave</Button>
+        <Button type="button" onClick={() => isEditModeSetter(workout._id)}>
+          Leave
+        </Button>
       </Wrapper>
     </StyledForm>
   );
