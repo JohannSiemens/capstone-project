@@ -14,7 +14,7 @@ const ListItem = styled.li`
   flex-direction: column;
   justify-content: center;
   width: 95%;
-  height: 120px;
+  height: 150px;
   border-radius: 5px;
   background: var(--secondary-color);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

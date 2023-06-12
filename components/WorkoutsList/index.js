@@ -1,11 +1,9 @@
 import useSWR from "swr";
 import { useState } from "react";
-import StyledLink from "../StyledLink";
-import Button from "../Button";
 import List from "../List";
 import Loader from "../Loader";
-import Input from "../Input";
-import Wrapper from "../Wrapper";
+import WorkoutEditForm from "./WorkoutEditForm";
+import WorkoutOverview from "./WorkoutOverview";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -16,7 +14,7 @@ export default function WorkoutsList() {
   }
 
   function isEditModeSetter(id) {
-    setIsEdit(id);
+    isEdit === id ? setIsEdit("") : setIsEdit(id);
   }
 
   async function deleteWorkout(id) {
@@ -56,37 +54,19 @@ export default function WorkoutsList() {
     <List>
       {data.map((workout) => (
         <List item key={workout._id}>
-          {workout._id === isEdit ? (
-            <form
-              onSubmit={(event) => {
-                editWorkout(event, workout._id);
-              }}
-            >
-              <Input
-                type="text"
-                name="newWorkout"
-                id="newWorkout"
-                pattern="[A-Za-z]{1,20}"
-                defaultValue={workout.title}
-                placeholder="New title ..."
-                required
-              />
-
-              {workout._id === isEdit && <Button type="submit">Submit</Button>}
-            </form>
+          {isEdit === workout._id ? (
+            <WorkoutEditForm
+              workout={workout}
+              isEditModeSetter={isEditModeSetter}
+              editWorkout={editWorkout}
+            />
           ) : (
-            <StyledLink href={`/workout/${workout._id}`}>
-              {workout.title}
-            </StyledLink>
+            <WorkoutOverview
+              workout={workout}
+              isEditModeSetter={isEditModeSetter}
+              deleteWorkout={deleteWorkout}
+            />
           )}
-          <Wrapper variant="row">
-            <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
-            {workout._id !== isEdit && (
-              <Button onClick={() => isEditModeSetter(workout._id)}>
-                Edit
-              </Button>
-            )}
-          </Wrapper>
         </List>
       ))}
     </List>
