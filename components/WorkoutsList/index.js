@@ -6,6 +6,7 @@ import List from "../List";
 import Loader from "../Loader";
 import Input from "../Input";
 import Wrapper from "../Wrapper";
+import StyledForm from "../Form";
 
 export default function WorkoutsList() {
   const { data, isLoading, error, mutate } = useSWR("/api/workouts-db");
@@ -52,41 +53,53 @@ export default function WorkoutsList() {
     }
   }
 
+  function WorkoutOverview({ workout }) {
+    return (
+      <>
+        <StyledLink href={`/workout/${workout._id}`}>
+          {workout.title}
+        </StyledLink>
+        <Wrapper variant="row">
+          <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
+          <Button onClick={() => isEditModeSetter(workout._id)}>Edit</Button>
+        </Wrapper>
+      </>
+    );
+  }
+
+  function WorkoutEditForm({ workout }) {
+    return (
+      <StyledForm
+        onSubmit={(event) => {
+          editWorkout(event, workout._id);
+        }}
+      >
+        <Input
+          type="text"
+          name="newWorkout"
+          id="newWorkout"
+          pattern="[A-Za-z]{1,20}"
+          defaultValue={workout.title}
+          placeholder="New title ..."
+          required
+        />
+        <Wrapper variant="row">
+          <Button type="submit">Submit</Button>
+          <Button onClick={() => isEditModeSetter(workout._id)}>Leave</Button>
+        </Wrapper>
+      </StyledForm>
+    );
+  }
+
   return (
     <List>
       {data.map((workout) => (
         <List item key={workout._id}>
-          {workout._id === isEdit ? (
-            <form
-              onSubmit={(event) => {
-                editWorkout(event, workout._id);
-              }}
-            >
-              <Input
-                type="text"
-                name="newWorkout"
-                id="newWorkout"
-                pattern="[A-Za-z]{1,20}"
-                defaultValue={workout.title}
-                placeholder="New title ..."
-                required
-              />
-
-              {workout._id === isEdit && <Button type="submit">Submit</Button>}
-            </form>
+          {isEdit ? (
+            <WorkoutEditForm workout={workout} />
           ) : (
-            <StyledLink href={`/workout/${workout._id}`}>
-              {workout.title}
-            </StyledLink>
+            <WorkoutOverview workout={workout} />
           )}
-          <Wrapper variant="row">
-            <Button onClick={() => deleteWorkout(workout._id)}>Delete</Button>
-            {workout._id !== isEdit && (
-              <Button onClick={() => isEditModeSetter(workout._id)}>
-                Edit
-              </Button>
-            )}
-          </Wrapper>
         </List>
       ))}
     </List>
