@@ -20,6 +20,31 @@ const NoDecoration = styled(Link)`
   margin: 0;
 `;
 
+const ButtonType = styled(Link)`
+  text-decoration: none;
+  font-size: 17px;
+  padding: 0.5em 2em;
+  border: transparent;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  background: dodgerblue;
+  color: white;
+  border-radius: 4px;
+  margin: 0px 10px;
+
+  :hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(30, 144, 255, 1) 0%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+
+  :active {
+    transform: translate(0em, 0.2em);
+  }
+`;
+
 const StyledLink = ({ children, variant, component, ...props }) => {
   if (variant === "workout") {
     return (
@@ -32,6 +57,12 @@ const StyledLink = ({ children, variant, component, ...props }) => {
       <NoDecoration as={component} {...props}>
         {children}
       </NoDecoration>
+    );
+  } else if (variant === "button-type") {
+    return (
+      <ButtonType as={component} {...props}>
+        {children}
+      </ButtonType>
     );
   }
 };

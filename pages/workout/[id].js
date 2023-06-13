@@ -28,11 +28,9 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   return (
     <div>
       <Typography variant="h1">{data.title}</Typography>
-      <Button>
-        <StyledLink variant="text-decoration" href="../">
-          Back
-        </StyledLink>
-      </Button>
+      <StyledLink variant="button-type" href="../">
+        Back
+      </StyledLink>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
       <AddedExercisesList workoutID={data._id} />
