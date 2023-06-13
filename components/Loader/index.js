@@ -7,6 +7,7 @@ const Loader = styled.div`
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
+  margin: 50px 0px;
 
   :before {
     content: "";

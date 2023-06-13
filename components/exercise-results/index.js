@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
 import Button from "../Button";
+import Wrapper from "../Wrapper";
+import List from "../List";
 
 export default function ExerciseResults({ exerciseResult, workoutID }) {
   const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);
@@ -23,13 +25,15 @@ export default function ExerciseResults({ exerciseResult, workoutID }) {
   }
 
   return (
-    <ul>
+    <List>
       {exerciseResult.map((exercise) => (
-        <li key={uuidv4()} style={{ listStyleType: "none" }}>
-          {exercise.name}
+        <Wrapper variant="row" key={uuidv4()}>
+          <List left key={uuidv4()}>
+            {exercise.name}
+          </List>
           <Button onClick={() => addExercise(exercise)}>Add</Button>
-        </li>
+        </Wrapper>
       ))}
-    </ul>
+    </List>
   );
 }
