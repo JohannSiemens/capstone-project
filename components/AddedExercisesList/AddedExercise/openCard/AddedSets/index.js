@@ -35,8 +35,6 @@ export default function AddedSets({ id }) {
 
   async function handleEdit(event, id, setID) {
     event.preventDefault();
-    console.log("Data ID: ", id);
-    console.log("Set ID: ", setID);
     const repetitions = parseInt(event.target.elements.rep_input.value);
     const response = await fetch(`/api/exercises-db/${id}`, {
       method: "PUT",
@@ -88,10 +86,6 @@ export default function AddedSets({ id }) {
 }
 
 function AddedSetsEditMode({ set, handleEdit, dataID }) {
-  {
-    console.log("Data ID: ", dataID);
-    console.log("Set ID ", set.id);
-  }
   return (
     <StyledForm onSubmit={(event) => handleEdit(event, dataID, set.id)}>
       <Input
