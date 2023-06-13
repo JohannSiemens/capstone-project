@@ -8,7 +8,9 @@ export default function OpenCard({ id, deleteExercise }) {
     <>
       <OpenCardForm id={id} />
       <AddedSets id={id} />
-      <Button onClick={() => deleteExercise(id)}>Delete Exercise</Button>
+      <Button type="button" onClick={() => deleteExercise(id)}>
+        Delete Exercise
+      </Button>
     </>
   );
 }
