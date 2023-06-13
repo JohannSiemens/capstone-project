@@ -15,6 +15,17 @@ const Wrapper = styled.section`
         justify-content: center;
         width: 100%;
       `;
+    } else if (variant === "row-card") {
+      return css`
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        background: var(--secondary-color);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin: 2px;
+        padding-left: 5px;
+      `;
     }
   }}
 `;

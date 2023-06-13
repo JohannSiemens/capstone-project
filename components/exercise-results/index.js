@@ -27,7 +27,7 @@ export default function ExerciseResults({ exerciseResult, workoutID }) {
   return (
     <List>
       {exerciseResult.map((exercise) => (
-        <Wrapper variant="row" key={uuidv4()}>
+        <Wrapper variant="row-card" key={uuidv4()}>
           <List left key={uuidv4()}>
             {exercise.name}
           </List>

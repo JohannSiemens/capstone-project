@@ -6,6 +6,10 @@ const UnsortedList = styled.ul`
   align-items: center;
   width: 90%;
   padding: 0;
+
+  @media screen and (min-width: 500px) {
+    width: 400px;
+  }
 `;
 
 const UnsortedListLeft = styled.ul`
