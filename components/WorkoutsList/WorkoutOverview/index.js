@@ -9,7 +9,9 @@ export default function WorkoutOverview({
 }) {
   return (
     <>
-      <StyledLink href={`/workout/${workout._id}`}>{workout.title}</StyledLink>
+      <StyledLink variant="workout" href={`/workout/${workout._id}`}>
+        {workout.title}
+      </StyledLink>
       <Wrapper variant="row">
         <Button type="button" onClick={() => deleteWorkout(workout._id)}>
           Delete

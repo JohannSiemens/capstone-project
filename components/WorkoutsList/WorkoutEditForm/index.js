@@ -14,8 +14,8 @@ export default function WorkoutEditForm({
         editWorkout(event, workout._id);
       }}
     >
-      <label>
-        Workout Title:
+      <Wrapper variant="column">
+        <label htmlFor="newWorkout">Workout Title:</label>
         <Input
           type="text"
           name="newWorkout"
@@ -25,13 +25,12 @@ export default function WorkoutEditForm({
           placeholder="New title ..."
           required
         />
-      </label>
-
-      <Wrapper variant="row">
-        <Button type="submit">Submit</Button>
-        <Button type="button" onClick={() => isEditModeSetter(workout._id)}>
-          Leave
-        </Button>
+        <Wrapper variant="row">
+          <Button type="submit">Submit</Button>
+          <Button type="button" onClick={() => isEditModeSetter(workout._id)}>
+            Leave
+          </Button>
+        </Wrapper>
       </Wrapper>
     </StyledForm>
   );

@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Loader from "@/components/Loader";
 import Typography from "@/components/Typography";
+import Button from "@/components/Button";
+import StyledLink from "@/components/StyledLink";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
@@ -26,9 +28,11 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   return (
     <div>
       <Typography variant="h1">{data.title}</Typography>
-      <button>
-        <Link href="../">Back</Link>
-      </button>
+      <Button>
+        <StyledLink variant="text-decoration" href="../">
+          Back
+        </StyledLink>
+      </Button>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
       <AddedExercisesList workoutID={data._id} />

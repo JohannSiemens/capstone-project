@@ -1,5 +1,9 @@
 import { useState } from "react";
 import Loader from "../Loader";
+import StyledForm from "../Form";
+import Input from "../Input";
+import Wrapper from "../Wrapper";
+import Button from "../Button";
 
 export default function ExerciseSearchForm({ setExerciseResult }) {
   const [loading, setLoading] = useState(false);
@@ -23,19 +27,19 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
       {loading ? (
         <Loader />
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Exercise:
-            <input
+        <StyledForm onSubmit={handleSubmit}>
+          <Wrapper variant="column">
+            <Input
               type="text"
               name="exercise_search"
               id="exercise_search"
               pattern="[A-Za-z]{3,20}"
+              placeholder="Exercise name ..."
               required
             />
-          </label>
-          <button type="submit">Search</button>
-        </form>
+            <Button type="submit">Search</Button>
+          </Wrapper>
+        </StyledForm>
       )}
     </>
   );
