@@ -1,11 +1,15 @@
 import useSWR from "swr";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Loader from "@/components/Loader";
+import Button from "@/components/Button";
+import List from "@/components/List";
+import Input from "@/components/Input";
+import Wrapper from "@/components/Wrapper";
+import StyledForm from "@/components/Form";
 
 export default function AddedSets({ id }) {
   const { data, isLoading, error, mutate } = useSWR(`/api/exercises-db/${id}`);
   const [isEdit, setIsEdit] = useState();
-  const inputRef = useRef(null);
 
   function editModeSetter(setID) {
     setIsEdit(setID);
@@ -29,8 +33,9 @@ export default function AddedSets({ id }) {
     }
   }
 
-  async function handleEdit(id, setID) {
-    const repetitions = parseInt(inputRef.current.value);
+  async function handleEdit(event, id, setID) {
+    event.preventDefault();
+    const repetitions = parseInt(event.target.elements.rep_input.value);
     const response = await fetch(`/api/exercises-db/${id}`, {
       method: "PUT",
       headers: {
@@ -55,38 +60,56 @@ export default function AddedSets({ id }) {
 
   return (
     data.sets.length > 0 && (
-      <ul>
+      <List>
         {data.sets.map((set, index) => (
-          <li key={set.id}>
-            Set {index + 1} -
+          <List item key={set.id}>
             {set.id === isEdit ? (
-              <input
-                type="number"
-                name="rep_input"
-                id="rep_input"
-                pattern="[0-9]{1,3}"
-                min="1"
-                defaultValue={set.repetitions}
-                ref={inputRef}
-                required
+              <AddedSetsEditMode
+                set={set}
+                handleEdit={handleEdit}
+                dataID={data._id}
               />
             ) : (
-              <> Repetitions: {set.repetitions}</>
+              <AddedSetsOverview
+                set={set}
+                index={index}
+                deleteSet={deleteSet}
+                editModeSetter={editModeSetter}
+                dataID={data._id}
+              />
             )}
-            <button onClick={() => deleteSet(data._id, set.id)}>Delete</button>
-            {set.id === isEdit ? (
-              <button
-                type="submit"
-                onClick={() => handleEdit(data._id, set.id)}
-              >
-                Submit
-              </button>
-            ) : (
-              <button onClick={() => editModeSetter(set.id)}>Edit</button>
-            )}
-          </li>
+          </List>
         ))}
-      </ul>
+      </List>
     )
+  );
+}
+
+function AddedSetsEditMode({ set, handleEdit, dataID }) {
+  return (
+    <StyledForm onSubmit={(event) => handleEdit(event, dataID, set.id)}>
+      <Input
+        type="number"
+        name="rep_input"
+        id="rep_input"
+        pattern="[0-9]{1,3}"
+        min="1"
+        defaultValue={set.repetitions}
+        required
+      />
+      <Button type="submit">Submit</Button>
+    </StyledForm>
+  );
+}
+
+function AddedSetsOverview({ set, index, deleteSet, editModeSetter, dataID }) {
+  return (
+    <Wrapper variant="column">
+      Set {index + 1} -<> Repetitions: {set.repetitions}</>
+      <Wrapper variant="row">
+        <Button onClick={() => deleteSet(dataID, set.id)}>Delete</Button>
+        <Button onClick={() => editModeSetter(set.id)}>Edit</Button>
+      </Wrapper>
+    </Wrapper>
   );
 }

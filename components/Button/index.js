@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
   font-size: 17px;
@@ -22,6 +22,18 @@ const Button = styled.button`
   :active {
     transform: translate(0em, 0.2em);
   }
+
+  ${({ variant }) => {
+    if (variant === "drop-down") {
+      return css`
+        text-align: center;
+        font-size: 17px;
+        padding: 0.5em;
+        width: 100%;
+        margin: 5px;
+      `;
+    }
+  }}
 `;
 
 export default Button;

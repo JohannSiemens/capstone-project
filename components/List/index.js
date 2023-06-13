@@ -6,6 +6,18 @@ const UnsortedList = styled.ul`
   align-items: center;
   width: 90%;
   padding: 0;
+
+  @media screen and (min-width: 500px) {
+    width: 400px;
+  }
+`;
+
+const UnsortedListLeft = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  padding: 0;
 `;
 
 const ListItem = styled.li`
@@ -22,12 +34,18 @@ const ListItem = styled.li`
   padding: 0;
 `;
 
-const List = ({ children, item, component, ...props }) => {
+const List = ({ children, left, item, component, ...props }) => {
   if (item) {
     return (
       <ListItem as={component} {...props}>
         {children}
       </ListItem>
+    );
+  } else if (left) {
+    return (
+      <UnsortedListLeft as={component} {...props}>
+        {children}
+      </UnsortedListLeft>
     );
   } else {
     return (

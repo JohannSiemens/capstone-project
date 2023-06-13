@@ -2,6 +2,10 @@ import useSWR from "swr";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
+import Input from "@/components/Input";
+import StyledForm from "@/components/Form";
+import Button from "@/components/Button";
+import Wrapper from "@/components/Wrapper";
 
 export default function OpenCardForm({ id }) {
   const [currentSet, setCurrentSet] = useState(1);
@@ -25,6 +29,7 @@ export default function OpenCardForm({ id }) {
 
     if (response.ok) {
       mutate();
+      event.target.reset();
     } else {
       console.error(`Error Status: ${response.status}`);
       console.error(`Error: ${error}`);
@@ -36,20 +41,19 @@ export default function OpenCardForm({ id }) {
   }, [data, isLoading]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Set {currentSet}</p>
-      <label>
-        Repetitions:
-        <input
+    <StyledForm onSubmit={handleSubmit}>
+      <Wrapper variant="row">
+        <Input
           type="number"
           name="rep_input"
           id="rep_input"
           pattern="[0-9]{1,3}"
           min="1"
+          placeholder={`Set ${currentSet} repetitions ...`}
           required
         />
-      </label>
-      <button type="submit">Add</button>
-    </form>
+        <Button type="submit">Add</Button>
+      </Wrapper>
+    </StyledForm>
   );
 }

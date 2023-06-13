@@ -1,6 +1,7 @@
 import OpenCard from "./openCard";
 import { useState } from "react";
 import useSWR from "swr";
+import Button from "@/components/Button";
 
 export default function AddedExercise({ exercise, workoutID }) {
   const [openCard, setOpenCard] = useState(false);
@@ -24,16 +25,15 @@ export default function AddedExercise({ exercise, workoutID }) {
     setOpenCard(!openCard);
   }
   return (
-    <li key={exercise._id} style={{ listStyleType: "none" }}>
-      <button onClick={openCardSetter}>
-        {exercise.name} {String.fromCharCode(openCard === false ? 9660 : 9650)}
-      </button>
-      <button onClick={() => deleteExercise(exercise._id)}>
-        Delete exercise
-      </button>
-      <br />
-      <br />
-      {openCard && <OpenCard id={exercise._id} />}
-    </li>
+    <>
+      <Button variant="drop-down" onClick={openCardSetter}>
+        {exercise.name}
+        {String.fromCharCode(openCard === false ? 9660 : 9650)}
+      </Button>
+
+      {openCard && (
+        <OpenCard id={exercise._id} deleteExercise={deleteExercise} />
+      )}
+    </>
   );
 }

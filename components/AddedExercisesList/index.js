@@ -1,6 +1,7 @@
 import AddedExercise from "./AddedExercise";
 import useSWR from "swr";
 import Loader from "../Loader";
+import List from "../List";
 
 export default function AddedExercisesList({ workoutID }) {
   const { data, isLoading, isValidating, error } = useSWR(
@@ -18,7 +19,7 @@ export default function AddedExercisesList({ workoutID }) {
 
   return (
     data.exercises.length > 0 && (
-      <ul>
+      <List>
         {data.exercises.map((exercise) => (
           <AddedExercise
             exercise={exercise}
@@ -26,7 +27,7 @@ export default function AddedExercisesList({ workoutID }) {
             workoutID={workoutID}
           />
         ))}
-      </ul>
+      </List>
     )
   );
 }
