@@ -36,13 +36,18 @@ export default function AddedSets({ id }) {
   async function handleEdit(event, id, setID) {
     event.preventDefault();
     const repetitions = parseInt(event.target.elements.rep_input.value);
+    const weight = parseInt(event.target.elements.weight_input.value);
     const response = await fetch(`/api/exercises-db/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         editSet: true,
       },
-      body: JSON.stringify({ setID: setID, repetitions: repetitions }),
+      body: JSON.stringify({
+        setID: setID,
+        repetitions: repetitions,
+        weight: weight,
+      }),
     });
 
     if (response.ok) {
@@ -96,6 +101,14 @@ function AddedSetsEditMode({ set, handleEdit, dataID }) {
         min="1"
         defaultValue={set.repetitions}
         required
+      />
+      <Input
+        type="number"
+        name="weight_input"
+        id="weight_input"
+        pattern="[0-9]{1,3}"
+        min="1"
+        defaultValue={set.weight}
       />
       <Button type="submit">Submit</Button>
     </StyledForm>
