@@ -32,6 +32,7 @@ export default function OpenCardForm({ id }) {
     if (response.ok) {
       mutate();
       event.target.reset();
+      event.target.elements.rep_input.focus();
     } else {
       console.error(`Error Status: ${response.status}`);
       console.error(`Error: ${error}`);
