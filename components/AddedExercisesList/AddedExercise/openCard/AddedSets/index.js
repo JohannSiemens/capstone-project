@@ -94,23 +94,32 @@ export default function AddedSets({ id }) {
 function AddedSetsEditMode({ set, handleEdit, dataID }) {
   return (
     <StyledForm onSubmit={(event) => handleEdit(event, dataID, set.id)}>
-      <Input
-        type="number"
-        name="rep_input"
-        id="rep_input"
-        pattern="[0-9]{1,3}"
-        min="1"
-        defaultValue={set.repetitions}
-        required
-      />
-      <Input
-        type="number"
-        name="weight_input"
-        id="weight_input"
-        pattern="[0-9]{1,3}"
-        min="1"
-        defaultValue={set.weight}
-      />
+      <Wrapper variant="row">
+        <label>
+          Repetitions:{" "}
+          <Input
+            type="number"
+            name="rep_input"
+            id="rep_input"
+            pattern="[0-9]{1,3}"
+            min="1"
+            defaultValue={set.repetitions}
+            required
+          />
+        </label>
+        <label>
+          Weight:{" "}
+          <Input
+            type="number"
+            name="weight_input"
+            id="weight_input"
+            pattern="[0-9]{1,3}"
+            min="1"
+            defaultValue={set.weight}
+          />
+        </label>
+      </Wrapper>
+
       <Button type="submit">Submit</Button>
     </StyledForm>
   );
