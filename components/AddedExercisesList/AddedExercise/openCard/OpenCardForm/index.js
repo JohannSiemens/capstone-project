@@ -13,9 +13,11 @@ export default function OpenCardForm({ id }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const exerciseInput = parseInt(event.target.elements.rep_input.value);
+    const exerciseRepetitions = parseInt(event.target.elements.rep_input.value);
+    const exerciseWeight = parseInt(event.target.elements.weight_input.value);
     const addedSet = {
-      repetitions: exerciseInput,
+      repetitions: exerciseRepetitions,
+      weight: exerciseWeight,
       id: uuidv4(),
     };
 
@@ -30,6 +32,7 @@ export default function OpenCardForm({ id }) {
     if (response.ok) {
       mutate();
       event.target.reset();
+      event.target.elements.rep_input.focus();
     } else {
       console.error(`Error Status: ${response.status}`);
       console.error(`Error: ${error}`);
@@ -51,6 +54,14 @@ export default function OpenCardForm({ id }) {
           min="1"
           placeholder={`Set ${currentSet} repetitions ...`}
           required
+        />
+        <Input
+          type="number"
+          name="weight_input"
+          id="weight_input"
+          pattern="[0-9]{1,3}"
+          min="1"
+          placeholder={`Set ${currentSet} weight ...`}
         />
         <Button type="submit">Add</Button>
       </Wrapper>

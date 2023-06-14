@@ -13,6 +13,7 @@ const Wrapper = styled.section`
     } else if (variant === "row") {
       return css`
         justify-content: center;
+        text-align: center;
         width: 100%;
       `;
     } else if (variant === "row-card") {

@@ -27,9 +27,10 @@ export default async function handler(request, response) {
     } else if (request.headers.editset) {
       const setID = setsData.setID;
       const repetitions = setsData.repetitions;
+      const weight = setsData.weight;
       await Exercise.findOneAndUpdate(
         { _id: id, "sets.id": setID },
-        { $set: { "sets.$.repetitions": repetitions } }
+        { $set: { "sets.$.repetitions": repetitions, "sets.$.weight": weight } }
       );
     } else {
       await Exercise.findByIdAndUpdate(id, { $push: { sets: setsData } });

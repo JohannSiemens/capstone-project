@@ -4,7 +4,11 @@ import Button from "../Button";
 import Wrapper from "../Wrapper";
 import List from "../List";
 
-export default function ExerciseResults({ exerciseResult, workoutID }) {
+export default function ExerciseResults({
+  exerciseResult,
+  workoutID,
+  setExerciseResult,
+}) {
   const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);
 
   async function addExercise(exercise) {
@@ -19,6 +23,7 @@ export default function ExerciseResults({ exerciseResult, workoutID }) {
 
     if (response.ok) {
       mutate();
+      setExerciseResult([]);
     } else {
       console.error(`Error: ${response.status}`);
     }

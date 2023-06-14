@@ -6,8 +6,16 @@ const StyledH1 = styled.h1`
   color: white;
   margin-top: 0px;
   padding: 15px 0px;
-  font-family: openSans;
   width: 100%;
+`;
+
+const StyledText = styled.p`
+  text-align: center;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 5px 0px;
+  width: 100%;
+  font-size: 18px;
 `;
 
 const Typography = ({ children, variant, component, ...props }) => {
@@ -16,6 +24,12 @@ const Typography = ({ children, variant, component, ...props }) => {
       <StyledH1 as={component} {...props}>
         {children}
       </StyledH1>
+    );
+  } else if (variant === "text") {
+    return (
+      <StyledText as={component} {...props}>
+        {children}
+      </StyledText>
     );
   }
 };
