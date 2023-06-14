@@ -105,7 +105,10 @@ function AddedSetsEditMode({ set, handleEdit, dataID }) {
 function AddedSetsOverview({ set, index, deleteSet, editModeSetter, dataID }) {
   return (
     <Wrapper variant="column">
-      Set {index + 1} -<> Repetitions: {set.repetitions}</>
+      Set {index + 1} -
+      <>
+        Repetitions: {set.repetitions} Weight: {set.weight}
+      </>
       <Wrapper variant="row">
         <Button onClick={() => deleteSet(dataID, set.id)}>Delete</Button>
         <Button onClick={() => editModeSetter(set.id)}>Edit</Button>
