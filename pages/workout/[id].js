@@ -1,12 +1,10 @@
 import ExerciseResults from "@/components/exercise-results";
 import ExerciseSearchForm from "@/components/exercise-search-form";
 import AddedExercisesList from "@/components/AddedExercisesList";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Loader from "@/components/Loader";
 import Typography from "@/components/Typography";
-import Button from "@/components/Button";
 import StyledLink from "@/components/StyledLink";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
@@ -32,7 +30,13 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
         Back
       </StyledLink>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
-      <ExerciseResults exerciseResult={exerciseResult} workoutID={data._id} />
+      {exerciseResult.length > 0 && (
+        <ExerciseResults
+          exerciseResult={exerciseResult}
+          workoutID={data._id}
+          setExerciseResult={setExerciseResult}
+        />
+      )}
       <AddedExercisesList workoutID={data._id} />
     </div>
   );
