@@ -6,6 +6,7 @@ import List from "@/components/List";
 import Input from "@/components/Input";
 import Wrapper from "@/components/Wrapper";
 import StyledForm from "@/components/Form";
+import Typography from "@/components/Typography";
 
 export default function AddedSets({ id }) {
   const { data, isLoading, error, mutate } = useSWR(`/api/exercises-db/${id}`);
@@ -118,10 +119,10 @@ function AddedSetsEditMode({ set, handleEdit, dataID }) {
 function AddedSetsOverview({ set, index, deleteSet, editModeSetter, dataID }) {
   return (
     <Wrapper variant="column">
-      Set {index + 1} -
-      <>
-        Repetitions: {set.repetitions} Weight: {set.weight}
-      </>
+      <Typography variant="text">
+        Set {index + 1} <br /> Repetitions: {set.repetitions} Weight:{" "}
+        {set.weight}kg
+      </Typography>
       <Wrapper variant="row">
         <Button onClick={() => deleteSet(dataID, set.id)}>Delete</Button>
         <Button onClick={() => editModeSetter(set.id)}>Edit</Button>
