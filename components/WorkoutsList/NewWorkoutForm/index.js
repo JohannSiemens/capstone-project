@@ -24,7 +24,7 @@ export default function NewWorkoutForm({ newWorkoutSetter }) {
   }
 
   return (
-    <StyledForm variant="small" onSubmit={createWorkout}>
+    <StyledForm variant="small" onSubmit={createWorkout} autoComplete="off">
       <Wrapper variant="row">
         <Button type="submit">Create</Button>
         <Button type="button" onClick={newWorkoutSetter}>

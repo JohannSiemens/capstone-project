@@ -4,7 +4,6 @@ import StyledForm from "../Form";
 import Input from "../Input";
 import Wrapper from "../Wrapper";
 import Button from "../Button";
-import ExerciseResults from "../exercise-results";
 
 export default function ExerciseSearchForm({
   exerciseResultSetter,
@@ -31,7 +30,7 @@ export default function ExerciseSearchForm({
       {loading ? (
         <Loader />
       ) : (
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit} autoComplete="off">
           <Wrapper variant="column">
             <Wrapper variant="row-space">
               <label>
