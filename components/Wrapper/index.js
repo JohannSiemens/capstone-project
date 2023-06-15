@@ -16,6 +16,13 @@ const Wrapper = styled.section`
         text-align: center;
         width: 100%;
       `;
+    } else if (variant === "row-space") {
+      return css`
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        padding: 20px 10px;
+      `;
     } else if (variant === "row-left") {
       return css`
         align-items: center;

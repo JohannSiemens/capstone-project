@@ -45,26 +45,32 @@ export default function OpenCardForm({ id }) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <Wrapper variant="row">
-        <Input
-          type="number"
-          name="rep_input"
-          id="rep_input"
-          pattern="[0-9]{1,3}"
-          min="1"
-          placeholder={`Set ${currentSet} repetitions ...`}
-          required
-        />
-        <Input
-          type="number"
-          name="weight_input"
-          id="weight_input"
-          pattern="[0-9]{1,3}"
-          min="1"
-          placeholder={`Set ${currentSet} weight ...`}
-        />
-        <Button type="submit">Add</Button>
+      <Wrapper variant="row-space">
+        <label>
+          Repetitions:{" "}
+          <Input
+            type="number"
+            name="rep_input"
+            id="rep_input"
+            pattern="[0-9]{1,3}"
+            min="1"
+            placeholder={`Set ${currentSet} repetitions ...`}
+            required
+          />
+        </label>
+        <label>
+          Weight:{" "}
+          <Input
+            type="number"
+            name="weight_input"
+            id="weight_input"
+            pattern="[0-9]{1,3}"
+            min="1"
+            placeholder={`Set ${currentSet} weight ...`}
+          />
+        </label>
       </Wrapper>
+      <Button type="submit">Add</Button>
     </StyledForm>
   );
 }

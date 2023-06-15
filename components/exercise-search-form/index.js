@@ -29,14 +29,20 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
       ) : (
         <StyledForm onSubmit={handleSubmit}>
           <Wrapper variant="column">
-            <Input
-              type="text"
-              name="exercise_search"
-              id="exercise_search"
-              pattern="[A-Za-z]{3,20}"
-              placeholder="Exercise name ..."
-              required
-            />
+            <Wrapper variant="row-space">
+              <label>
+                Exercise name:{" "}
+                <Input
+                  type="text"
+                  name="exercise_search"
+                  id="exercise_search"
+                  pattern="[A-Za-z]{3,20}"
+                  placeholder="Exercise name ..."
+                  aria-label="Exercise name you want to search"
+                  required
+                />
+              </label>
+            </Wrapper>
             <Button type="submit">Search</Button>
           </Wrapper>
         </StyledForm>
