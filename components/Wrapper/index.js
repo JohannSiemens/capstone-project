@@ -16,6 +16,12 @@ const Wrapper = styled.section`
         text-align: center;
         width: 100%;
       `;
+    } else if (variant === "row-left") {
+      return css`
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+      `;
     } else if (variant === "row-card") {
       return css`
         justify-content: center;

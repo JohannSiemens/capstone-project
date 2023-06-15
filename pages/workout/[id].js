@@ -6,6 +6,7 @@ import useSWR from "swr";
 import Loader from "@/components/Loader";
 import Typography from "@/components/Typography";
 import StyledLink from "@/components/StyledLink";
+import Wrapper from "@/components/Wrapper";
 
 export default function Workout({ exerciseResult, setExerciseResult }) {
   const router = useRouter();
@@ -26,9 +27,11 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   return (
     <div>
       <Typography variant="h1">{data.title}</Typography>
-      <StyledLink variant="button-type" href="../">
-        Back
-      </StyledLink>
+      <Wrapper variant="row-left">
+        <StyledLink variant="button-type" href="../">
+          Back to workouts
+        </StyledLink>
+      </Wrapper>
       <ExerciseSearchForm setExerciseResult={setExerciseResult} />
       {exerciseResult.length > 0 && (
         <ExerciseResults
