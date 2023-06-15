@@ -7,7 +7,7 @@ import List from "../List";
 export default function ExerciseResults({
   exerciseResult,
   workoutID,
-  setExerciseResult,
+  exerciseResultSetter,
 }) {
   const { mutate } = useSWR(`/api/workouts-db/${workoutID}`);
 
@@ -23,7 +23,7 @@ export default function ExerciseResults({
 
     if (response.ok) {
       mutate();
-      setExerciseResult([]);
+      exerciseResultSetter([]);
     } else {
       console.error(`Error: ${response.status}`);
     }

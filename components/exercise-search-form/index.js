@@ -4,8 +4,12 @@ import StyledForm from "../Form";
 import Input from "../Input";
 import Wrapper from "../Wrapper";
 import Button from "../Button";
+import ExerciseResults from "../exercise-results";
 
-export default function ExerciseSearchForm({ setExerciseResult }) {
+export default function ExerciseSearchForm({
+  exerciseResultSetter,
+  exerciseResult,
+}) {
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
@@ -18,7 +22,7 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
     const responseData = await response.json();
     responseData.length === 0
       ? alert("No exercises found")
-      : setExerciseResult(responseData);
+      : exerciseResultSetter(responseData);
     setLoading(false);
   }
 
@@ -43,7 +47,15 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
                 />
               </label>
             </Wrapper>
-            <Button type="submit">Search</Button>
+            <Wrapper variant="row">
+              {" "}
+              <Button type="submit">Search</Button>
+              {exerciseResult.length > 0 && (
+                <Button type="button" onClick={() => exerciseResultSetter([])}>
+                  Clear results
+                </Button>
+              )}
+            </Wrapper>
           </Wrapper>
         </StyledForm>
       )}

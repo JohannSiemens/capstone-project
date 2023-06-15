@@ -25,7 +25,13 @@ export default function NewWorkoutForm({ newWorkoutSetter }) {
 
   return (
     <StyledForm variant="small" onSubmit={createWorkout}>
-      <Button type="submit">Create</Button>
+      <Wrapper variant="row">
+        <Button type="submit">Create</Button>
+        <Button type="button" onClick={newWorkoutSetter}>
+          Cancel
+        </Button>
+      </Wrapper>
+
       <Wrapper variant="row-space">
         <label>
           New Workout Title:{" "}

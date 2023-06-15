@@ -17,6 +17,10 @@ const fetcher = async (url) => {
 export default function App({ Component, pageProps }) {
   const [exerciseResult, setExerciseResult] = useState([]);
 
+  function exerciseResultSetter(data) {
+    setExerciseResult(data);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -24,7 +28,7 @@ export default function App({ Component, pageProps }) {
         <Component
           {...pageProps}
           exerciseResult={exerciseResult}
-          setExerciseResult={setExerciseResult}
+          exerciseResultSetter={exerciseResultSetter}
         />
       </SWRConfig>
     </>
