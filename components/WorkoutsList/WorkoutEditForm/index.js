@@ -10,6 +10,7 @@ export default function WorkoutEditForm({
 }) {
   return (
     <StyledForm
+      autoComplete="off"
       onSubmit={(event) => {
         editWorkout(event, workout._id);
       }}
@@ -23,6 +24,7 @@ export default function WorkoutEditForm({
           pattern="[A-Za-z]{1,20}"
           defaultValue={workout.title}
           placeholder="New title ..."
+          aria-label="Title for your workout"
           required
         />
         <Wrapper variant="row">

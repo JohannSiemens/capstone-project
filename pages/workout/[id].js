@@ -6,8 +6,9 @@ import useSWR from "swr";
 import Loader from "@/components/Loader";
 import Typography from "@/components/Typography";
 import StyledLink from "@/components/StyledLink";
+import Wrapper from "@/components/Wrapper";
 
-export default function Workout({ exerciseResult, setExerciseResult }) {
+export default function Workout({ exerciseResult, exerciseResultSetter }) {
   const router = useRouter();
   const { id } = router.query;
   const { data, isLoading, isValidating, error } = useSWR(
@@ -26,15 +27,20 @@ export default function Workout({ exerciseResult, setExerciseResult }) {
   return (
     <div>
       <Typography variant="h1">{data.title}</Typography>
-      <StyledLink variant="button-type" href="../">
-        Back
-      </StyledLink>
-      <ExerciseSearchForm setExerciseResult={setExerciseResult} />
+      <Wrapper variant="row-left">
+        <StyledLink variant="button-type" href="../">
+          Back to workouts
+        </StyledLink>
+      </Wrapper>
+      <ExerciseSearchForm
+        exerciseResultSetter={exerciseResultSetter}
+        exerciseResult={exerciseResult}
+      />
       {exerciseResult.length > 0 && (
         <ExerciseResults
           exerciseResult={exerciseResult}
           workoutID={data._id}
-          setExerciseResult={setExerciseResult}
+          exerciseResultSetter={exerciseResultSetter}
         />
       )}
       <AddedExercisesList workoutID={data._id} />

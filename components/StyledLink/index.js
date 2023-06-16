@@ -23,7 +23,7 @@ const NoDecoration = styled(Link)`
 const ButtonType = styled(Link)`
   text-decoration: none;
   font-size: 17px;
-  padding: 0.5em 2em;
+  padding: 0.5em;
   border: transparent;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   background: dodgerblue;

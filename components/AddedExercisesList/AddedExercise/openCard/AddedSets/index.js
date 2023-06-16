@@ -1,12 +1,9 @@
 import useSWR from "swr";
 import { useState } from "react";
+import AddedSetsEditMode from "./AddedSetsEditMode";
+import AddedSetsOverview from "./AddedSetsOverview";
 import Loader from "@/components/Loader";
-import Button from "@/components/Button";
 import List from "@/components/List";
-import Input from "@/components/Input";
-import Wrapper from "@/components/Wrapper";
-import StyledForm from "@/components/Form";
-import Typography from "@/components/Typography";
 
 export default function AddedSets({ id }) {
   const { data, isLoading, error, mutate } = useSWR(`/api/exercises-db/${id}`);
@@ -74,6 +71,7 @@ export default function AddedSets({ id }) {
                 set={set}
                 handleEdit={handleEdit}
                 dataID={data._id}
+                editModeSetter={editModeSetter}
               />
             ) : (
               <AddedSetsOverview
@@ -88,54 +86,5 @@ export default function AddedSets({ id }) {
         ))}
       </List>
     )
-  );
-}
-
-function AddedSetsEditMode({ set, handleEdit, dataID }) {
-  return (
-    <StyledForm onSubmit={(event) => handleEdit(event, dataID, set.id)}>
-      <Wrapper variant="row">
-        <label>
-          Repetitions:{" "}
-          <Input
-            type="number"
-            name="rep_input"
-            id="rep_input"
-            pattern="[0-9]{1,3}"
-            min="1"
-            defaultValue={set.repetitions}
-            required
-          />
-        </label>
-        <label>
-          Weight:{" "}
-          <Input
-            type="number"
-            name="weight_input"
-            id="weight_input"
-            pattern="[0-9]{1,3}"
-            min="1"
-            defaultValue={set.weight}
-          />
-        </label>
-      </Wrapper>
-
-      <Button type="submit">Submit</Button>
-    </StyledForm>
-  );
-}
-
-function AddedSetsOverview({ set, index, deleteSet, editModeSetter, dataID }) {
-  return (
-    <Wrapper variant="column">
-      <Typography variant="text">
-        Set {index + 1} <br /> Repetitions: {set.repetitions}{" "}
-        {set.weight > 0 && `Weight: ${set.weight} kg`}
-      </Typography>
-      <Wrapper variant="row">
-        <Button onClick={() => deleteSet(dataID, set.id)}>Delete</Button>
-        <Button onClick={() => editModeSetter(set.id)}>Edit</Button>
-      </Wrapper>
-    </Wrapper>
   );
 }

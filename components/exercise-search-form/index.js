@@ -5,7 +5,10 @@ import Input from "../Input";
 import Wrapper from "../Wrapper";
 import Button from "../Button";
 
-export default function ExerciseSearchForm({ setExerciseResult }) {
+export default function ExerciseSearchForm({
+  exerciseResultSetter,
+  exerciseResult,
+}) {
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
@@ -18,7 +21,7 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
     const responseData = await response.json();
     responseData.length === 0
       ? alert("No exercises found")
-      : setExerciseResult(responseData);
+      : exerciseResultSetter(responseData);
     setLoading(false);
   }
 
@@ -27,17 +30,31 @@ export default function ExerciseSearchForm({ setExerciseResult }) {
       {loading ? (
         <Loader />
       ) : (
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit} autoComplete="off">
           <Wrapper variant="column">
-            <Input
-              type="text"
-              name="exercise_search"
-              id="exercise_search"
-              pattern="[A-Za-z]{3,20}"
-              placeholder="Exercise name ..."
-              required
-            />
-            <Button type="submit">Search</Button>
+            <Wrapper variant="row-space">
+              <label>
+                Exercise name:{" "}
+                <Input
+                  type="text"
+                  name="exercise_search"
+                  id="exercise_search"
+                  pattern="[A-Za-z]{3,20}"
+                  placeholder="Exercise name ..."
+                  aria-label="Exercise name you want to search"
+                  required
+                />
+              </label>
+            </Wrapper>
+            <Wrapper variant="row">
+              {" "}
+              <Button type="submit">Search</Button>
+              {exerciseResult.length > 0 && (
+                <Button type="button" onClick={() => exerciseResultSetter([])}>
+                  Clear results
+                </Button>
+              )}
+            </Wrapper>
           </Wrapper>
         </StyledForm>
       )}
