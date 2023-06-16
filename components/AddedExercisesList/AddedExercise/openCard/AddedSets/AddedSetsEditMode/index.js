@@ -10,7 +10,10 @@ export default function AddedSetsEditMode({
   editModeSetter,
 }) {
   return (
-    <StyledForm onSubmit={(event) => handleEdit(event, dataID, set.id)}>
+    <StyledForm
+      autoComplete="off"
+      onSubmit={(event) => handleEdit(event, dataID, set.id)}
+    >
       <Wrapper variant="row">
         <label>
           Repetitions:{" "}

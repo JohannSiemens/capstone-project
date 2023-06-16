@@ -10,6 +10,7 @@ export default function WorkoutEditForm({
 }) {
   return (
     <StyledForm
+      autoComplete="off"
       onSubmit={(event) => {
         editWorkout(event, workout._id);
       }}

@@ -44,7 +44,7 @@ export default function OpenCardForm({ id }) {
   }, [data, isLoading]);
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit} autoComplete="off">
       <Wrapper variant="row-space">
         <label>
           Repetitions:{" "}
